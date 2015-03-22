@@ -16,7 +16,7 @@
 vector<int> twoSum(vector<int> &numbers, int target) {
 	vector<int> ret;
 	unordered_map<int, int> hm;
-	unordered_map<int, int>::iterator it;
+	unordered_map<int, int>::iterator it;    
 	
 	for(int i=0; i<numbers.size(); i++){
 		if(hm.count(numbers.at(i))){
