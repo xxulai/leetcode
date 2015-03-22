@@ -113,12 +113,100 @@ vector<int> twoSum(vector<int> &numbers, int target) {
         return ret;
     }
 
+	string largestNumber(vector<int> &num) {
+		string ret;
+		vector<string> strvec;
+
+		for(vector<int>::iterator it=num.begin(); it!=num.end(); it++){
+			char t[32];
+			sprintf_s(t, sizeof(t)/sizeof(char), "%d", *(it));
+			//itoa(*it, t, 10);
+			strvec.push_back(t);
+		}
+
+		bool swflag=true;
+
+		while(swflag){
+			swflag=false;
+			for(vector<string>::iterator sit=strvec.begin(); sit!=strvec.end(); sit++){
+				//char strvalue[256];
+				//char strvalue1[256];
+
+				if((sit+1)==strvec.end())
+				{
+					break;
+				}
+
+				string strvalue=*sit+*(sit+1);
+				string strvalue1=*(sit+1)+*(sit);
+
+				//sprintf_s(strvalue, "%s%s", sit->c_str(), (sit+1)->c_str());
+				//long tvalue=strtol(strvalue, &end, 10);
+				//sprintf_s(strvalue1, "%s%s", (sit+1)->c_str(), (sit)->c_str());
+				//long tvalue1=strtol(strvalue, &end, 10);
+
+				if(strvalue<strvalue1){
+					//switch
+					string tvalue=*(sit+1);
+					*(sit+1)=*sit;
+					*sit=tvalue;
+					swflag=true;
+				}
+			}
+		}
+		
+		for(vector<string>::iterator sit=strvec.begin(); sit!=strvec.end(); sit++){
+			ret+=*(sit);
+		}
+
+		if(atoi(ret.c_str())==0){
+			ret="0";
+		}
+
+		return ret;
+    }
+
+
+	static bool cmp(string &a, string &b) {
+		//return a+b>b+a;
+		return false;
+	}
+	string largestNumbersample(vector<int> &num) {
+		vector<string> snum;
+		for (int i = 0; i < num.size(); i++){
+			char t[256];
+			itoa(num[i], t, 10);
+			snum.push_back(t);
+		}
+ 
+		sort(snum.begin(), snum.end(), cmp);
+ 
+		string res = "";
+		for (int i = 0; i < snum.size(); i++)
+			res += snum[i];
+     
+		if (res[0] == '0')
+			return "0";
+		return res;
+	}
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	string out;
 	int input=24568;
 	out = convertToTitle(input);
 	
+	vector<int> num;
+
+	int iarray[]={0,0};
+
+	for(int i=0; i<sizeof(iarray)/sizeof(int); i++){
+		num.push_back(iarray[i]);
+	}
+
+	out=::largestNumber(num);
+
 	
 	return 0;
 }
