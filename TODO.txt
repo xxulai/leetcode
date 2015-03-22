@@ -1,0 +1,193 @@
+1. C++ python mix？
+2. B/S C/S structure
+3. search principle, usage of preprocessor?
+
+
+4. Implement C++ iterator?
+5. str.c_str()?
+
+
+C++ string operator table?
+
+int转string
+int n = 0;
+std::stringstream ss;
+std::string str;
+ss<<n;
+ss>>str;
+string转int
+std::string str = "123";
+int n = atoi(str.c_str());
+
+
+int普通溢出
+2147483647	2147483647	valid
+2147483648	2147483647	overflow
+-2147483648	-2147483648	valid
+-2147483649	-2147483648	underflow
+long long int普通溢出
+9223372036854775807	2147483647	overflow(int), valid(long long int)
+9223372036854775808	2147483647	overflow(int), overflow(long long int)
+-9223372036854775808	-2147483648	underflow(int), valid(long long int)
+-9223372036854775809	-2147483648	underflow(int), underflow(long long int)
+上溢为正数
+4294967295	2147483647	overflow, (int)(429496729 * 10 + 5) == -1
+4294967296	2147483647	overflow, (int)(429496729 * 10 + 6) == 0
+4294967297	2147483647	overflow, (int)(429496729 * 10 + 7) == 1
+
+
+
+ int转化为string
+
+1、使用itoa（int to string）
+
+复制代码
+ 1  //char *itoa( int value, char *string,int radix);
+ 2  // 原型说明：
+ 3  // value：欲转换的数据。
+ 4  // string：目标字符串的地址。
+ 5  // radix：转换后的进制数，可以是10进制、16进制等。
+ 6  // 返回指向string这个字符串的指针
+ 7 
+ 8  int aa = 30;
+ 9  char c[8];
+10  itoa(aa,c,16);
+11  cout<<c<<endl; // 1e
+复制代码
+注意：itoa并不是一个标准的C函数，它是Windows特有的，如果要写跨平台的程序，请用sprintf。
+
+sprintf_s(t, sizeof(t)/sizeof(char), "%05d", *(it));
+把it指向的整数使用5位长度，左面补零的方式打印到string s
+假如数字大于5位，则只显示数字本身， eg: 数字123456，string="123456"
+
+sprintf_s(t, sizeof(t)/sizeof(char), "%1.4f", *(it));
+
+
+sprintf_s 是sprintf的安全版本
+
+swprintf_s vc++特有，宽字符版sprintf_s
+
+
+2、使用sprintf
+
+
+
+
+复制代码
+ 1  // int sprintf( char *buffer, const char *format, [ argument] … );
+ 2  //参数列表
+ 3  // buffer：char型指针，指向将要写入的字符串的缓冲区。
+ 4  // format：格式化字符串。
+ 5  // [argument]...：可选参数，可以是任何类型的数据。
+ 6  // 返回值：字符串长度（strlen）
+ 7 
+ 8  int aa = 30;
+ 9  char c[8]; 
+10  int length = sprintf(c, "%05X", aa); 
+11  cout<<c<<endl; // 0001E
+复制代码
+3、使用stringstream
+
+复制代码
+1  int aa = 30;
+2  stringstream ss;
+3  ss<<aa; 
+4  string s1 = ss.str();
+5  cout<<s1<<endl; // 30
+6 
+7  string s2;
+8  ss>>s2;
+9  cout<<s2<<endl; // 30
+
+sprintf()函数中的第一个参数不是一个char型指针么，我用了一个char *str为什么会段错误？！是不是只能用数组？！
+
+
+sprintf函数功能： 把格式化的数据写入某个字符串缓冲区。
+所以第一个参数虽然是指针，但是必须是指向某个可以写入的，字符串缓冲区的首地址的指针。
+如果只是定义了一个局部变量的指针，但是没有对指针地址进行初始化的话，指针可能会指向一个随机地址，如果此地址是无效的地址段，就会出现你所描述的情况。
+其实用字符串数组名作为第一个参数；还是定义一个指针，一个字符串数组，将指针指向字符串首地址，再用指针作为第一个参数理论上没有什么实际区别。要求是指针指向的字符串缓冲区必须是有效可写地址。
+
+
+
+1.虚函数问题，析构函数为什么经常被声明为虚函数？析构函数里面能调用虚函数么？
+
+答：为了防止通过父类指针析构子类对象时能正确的调用虚函数。析构函数调用虚函数语法上是没有问题的，但是标准应该是不建议的。
+
+2.sizeof运算符的问题。char str[12]="hello"; sizeof(str)是多少？sizeof一个类的时候，都什么会被计算？静态成员会被计算进来么？如果这是一个子类，它的父类成员会被计算么？
+
+答：sizeof(str)结果应该是12(感谢一楼的提醒，我是又搞错了)。sizeof一个类的时候，非静态成员变量、有虚函数的话虚表指针会都计算进去，静态成员变量，还有成员函数都是不会被计算的。如果是子类，那么父类中的成员也会被计算的。
+
+鉴于一楼回复发现的问题，我给出对比：
+
+void GetSize(char str[])
+{
+void* p = malloc(15);
+printf("%d\n%d",sizeof(str),sizeof(p));
+}
+这个函数中，无论你传递多长的字符串作为参数，输出都是4 这一点和直接char str[12]还不一样！
+
+3.C++中什么属于多态？你有什么看法。
+
+答：这个还是虚函数，虚函数其实是为了让程序员根据子类的实际情况实现函数，而在调用时不必关心这些细节。
+
+4.const限定符。char const* ptr; const char * ptr, char * const ptr的区别？
+
+前两个都是常量指针，即他们指向的位置不能更改。第三个是指向的类型是常量字符，但是指针指向的位置可以更改。
+
+编程题
+
+迭代实现二叉树的前序遍历？
+
+这个用堆栈就好了
+
+[cpp] view plaincopy
+#include <stdio.h>  
+#include <stack>  
+using namespace std;  
+typedef struct _Tree  
+{  
+    int a;  
+    struct _Tree* left;  
+    struct _Tree* right;  
+}Tree;  
+void PrePrintTree(Tree* root)  
+{  
+  
+    if(root == NULL)  
+        return;  
+    Tree* p =NULL;  
+    stack<Tree*> st;  
+    st.push(root);  
+    while (st.size()>0)  
+    {  
+        p = st.top();  
+        st.pop();  
+        if(p->right!=NULL)  
+            st.push(p->right);  
+        if(p->left!=NULL)  
+            st.push(p->left);  
+        printf("%d\n",p->a);  
+    }  
+}  
+算法题：
+1.给一个长度为n的字符串，怎么实现循环右移k位，k可能大于n。
+
+这个我首先想到的是将k%n之后，将后k个字符拷贝出来，然后将前n-k个字符依次向后移动，然后把之前拷贝的k个字符拷贝到前k位上。
+
+但是面试官问我有没有空间复杂度是O(1)的算法。我说那就是计算每个字符右移之后的下表，然后交换了。他让我写出来坐标转换的公式，当时好紧张。想了半天没写出来。
+
+他就说先算了。。悲剧。。。
+
+2.大数据的top k问题。说在大量数据中，n个整数，求最大的k个整数。
+
+这个是大数据的经典问题，用最小堆，首先用前k个数构建一个最小堆，这样堆顶元素是最小的，然后遍历剩下的数，如果大于堆顶，则用它替换堆顶，并调整堆，保持最小堆。如果小于或者等于则直接跳过。
+
+概率题：
+
+说一个硬盘，它坏掉的可能性为x，问一年内它坏掉的可能性是多少？
+
+我说这就是1-它一年内不坏的可能性= 1-（1-x）^365
+
+面试官又问，说N个硬盘，一年内坏掉k个的概率？
+
+这个我貌似说的不对，我觉得应该用贝叶斯公式，但是公式被我给忘记了。。。悲剧。。活该数理统计63分。。。
