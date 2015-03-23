@@ -113,6 +113,237 @@ vector<int> twoSum(vector<int> &numbers, int target) {
         return ret;
     }
 
+	string convertTT(int n){
+		string ret;
+
+		if(n<=0){
+			return "";
+		}
+
+		string dic[26]={"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+
+		int indexNum=n%26;
+
+		if(indexNum==0){
+			indexNum=26;
+		}
+
+		ret=convertTT((n-1)/26)+dic[indexNum-1];
+		return ret;
+	}
+
+	int atoii(string str) {
+		vector<char> ve;
+        int ret=0;
+        bool firstflag=true;
+		bool badnumber=false;
+        
+        for (std::string::iterator it=str.begin(); it!=str.end(); it++)
+        {
+            if(firstflag && *it == ' '){
+				//skip start space
+                continue;
+            }
+
+
+
+            if(firstflag)
+            {
+                firstflag=false;
+            }
+
+            if(*it>'9' || *it<'0')
+            {
+				//not numeric between, return 0
+				badnumber=true;
+                ret=0;
+                break;
+            }
+            
+            ve.push_back(*it);
+        }
+
+		if(!badnumber){
+			for(int i=0; i<ve.size(); i++){
+				if(ve.at(i)>'9' || ve.at(i)<'0'){
+					ret=0;
+					break;
+				} else{
+					ret+=ve.at(ve.size()-1-i)*pow(10.0, i);
+				}
+			}
+		}
+
+		return ret;
+	}
+
+	uint32_t reverseBits(uint32_t n) {
+        uint32_t ret=0;
+        
+        vector<int> bits;
+        
+        if(n==0){
+            return n;
+        }
+        
+        for(int i=0; i<32; i++)   //32/4
+        {
+            bits.push_back(n%2);
+            n=n/2;
+        }
+            
+        for(int i=32; i>0; i--){
+            ret+=bits.at(32-i)*pow(2.0, i-1);
+        }
+        
+        return ret;
+    }
+
+	 void rotate(int nums[], int n, int k) {
+        
+        int tvalue=0;
+        vector<int> tarray;
+        
+        if(k>n){
+            k=k%n;
+        }
+        
+        for(int i=0; i<n; i++){
+            tarray.push_back(nums[i]);
+        } 
+
+		for(int i=0; i<k; i++)
+		{
+			nums[i]=tarray.at(n-k+i);
+		}
+
+		for(int i=k; i<n; i++)
+		{
+			nums[i]=tarray.at(i-k);
+		}
+     }
+
+	 void rotateO1(int nums[], int n, int k){
+
+		 int tvalue=0;
+		 int steps=k%n;
+
+		 for(int i=0; i<steps; i++){
+			 tvalue=nums[n-1];
+			 for(int i=n-1; i>=0; i--){
+				 nums[i]=nums[i-1];
+			 }
+			 nums[0]=tvalue;
+		 }
+			 /*for(int i=0; i<n; i++){
+				 nums[i+1]=nums[i];  WRONG!!!!, number will be polluted by num[1]
+			 }*/
+	 }
+
+	 int strtoi(string s){
+        int ret=0;
+        int count=s.length()*2;
+        
+        
+        for(string::iterator sit=s.begin(); sit!=s.end(); sit++)
+        {
+            int ivalue=0;
+
+			if(*(sit)=='A') ivalue=0;
+			else if(*(sit)=='C') {ivalue=1; ret+=pow(2.0, count-2);}
+			else if(*(sit)=='G') {ivalue=2; ret+=pow(2.0, count-1);}
+			else if(*(sit)=='T') {ivalue=3; ret+=pow(2.0, count-1)+pow(2.0, count-2);}
+            
+			count-=2;
+        }
+        
+        return ret;
+    }
+
+	 vector<string> findRepeatedDnaSequences(string s) {
+        vector<string> ret;
+		int size=s.length();
+		unordered_map<char, int> charmp;
+		unordered_map<int, int> mp;
+
+		charmp.insert(std::pair<char, int>('A', 0));
+		charmp.insert(std::pair<char, int>('C', 1));
+		charmp.insert(std::pair<char, int>('G', 2));
+		charmp.insert(std::pair<char, int>('T', 3));
+		
+		int ivalue=0;
+		for(string::iterator sit=s.begin(); sit!=s.end(); sit++){
+			string tvalue="";
+			if(sit-s.begin()<9){
+			    continue;
+			}
+			
+			ivalue=(ivalue<<2+charmp[*(sit)])&0xFFFFF;
+			
+			if(mp.count(ivalue)){
+				if(mp[ivalue]>0)
+				{
+					mp[ivalue]+=1;
+				}
+				else
+				{
+				    for(int i=9; i>0; i--) {tvalue+=*(sit-i);}
+					ret.push_back(tvalue);	
+					mp[ivalue]=1;
+				}
+			}else{
+				mp.insert(std::pair<int, int>(ivalue, 0));
+			}
+			
+		}
+
+		return ret;
+     }
+
+
+	  vector<string> findRepeatedDnaSequencesIndex(string s) {
+        vector<string> ret;
+		int size=s.length();
+		unordered_map<char, int> charmp;
+		unordered_map<int, int> mp;
+
+		charmp.insert(std::pair<char, int>('A', 0));
+		charmp.insert(std::pair<char, int>('C', 1));
+		charmp.insert(std::pair<char, int>('G', 2));
+		charmp.insert(std::pair<char, int>('T', 3));
+		
+		int ivalue=0;
+		for(int i=0; i<s.length(); i++){
+			string tvalue="";
+
+			ivalue<<=2;
+			ivalue=(ivalue+charmp[s.at(i)])&0xFFFFF;
+
+			if(i<9){
+			    continue;
+			}
+			
+			if(mp.count(ivalue)){
+				if(mp[ivalue]>0)
+				{
+					mp[ivalue]+=1;
+				}
+				else
+				{
+				    tvalue=s.substr(i-9, 10);
+					ret.push_back(tvalue);	
+					mp[ivalue]=1;
+				}
+			}else{
+				mp.insert(std::pair<int, int>(ivalue, 0));
+			}
+			
+		}
+
+		return ret;
+     }
+
+
 	string largestNumber(vector<int> &num) {
 		string ret;
 		vector<string> strvec;
@@ -191,11 +422,40 @@ vector<int> twoSum(vector<int> &numbers, int target) {
 	}
 
 
+
 int _tmain(int argc, _TCHAR* argv[])
 {
-	string out;
+	string out, out1;
 	int input=24568;
 	out = convertToTitle(input);
+	
+	input=729;
+	out = convertToTitle(input);
+	out1=convertTT(input);
+
+	
+	/*unordered_map<int, int> mp;
+	string str;
+	for(int i=0; i<300000; i++)
+	{
+		str+="test"+to_string((_ULonglong)i);
+		mp.insert(std::pair<int, int>(i, i));
+	}*/
+	
+	uint32_t a;
+	a=1;
+	a=reverseBits(a);
+	
+	input = atoii("  -1234567890123456789");
+
+	int intinput[]={1, 2, 3, 4, 5, 6, 7, 8};
+	rotateO1(intinput, 8, 125);
+
+	string strinput="GAGAGAGAGAGA";
+	
+	vector<string> ret;
+	ret=findRepeatedDnaSequencesIndex(strinput);
+
 	
 	vector<int> num;
 
