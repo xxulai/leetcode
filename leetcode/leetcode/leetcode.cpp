@@ -450,9 +450,28 @@ vector<int> twoSum(vector<int> &numbers, int target) {
 				mp.insert(std::pair<int, int>(*it, 1));
 			}
 		}
+		return ret; 
+    }
+
+	int titleToNumber(string s) {
+
+		int length=s.length();
+		char tchar='A';
+		int ret=0;
+		
+
+		std::unordered_map<char, int> mp;
+
+		for(int i=0; i<26; i++){
+			mp.insert(std::pair<char, int>(tchar+i, i+1));
+		}
+
+        for(string::iterator sit=s.begin(); sit!=s.end(); sit++){
+			ret+=mp[*sit]*pow(26.0, length-1);
+			length--;
+		}
 
 		return ret;
-		  
     }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -507,6 +526,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		majorityElementVector.push_back(majorityElementarray[i]);
 	}
 	int t=majorityElement(majorityElementVector);
+
+	int inttitleToNumber = titleToNumber("BA");
 
 	return 0;
 }
