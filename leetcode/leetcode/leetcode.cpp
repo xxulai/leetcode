@@ -436,27 +436,22 @@ vector<int> twoSum(vector<int> &numbers, int target) {
 
 	int majorityElement(vector<int> &num) {
         
-		vector<int> tarray;
-		int count=0;
-		
-		if(num.size()<=2){
-			return num.at(0);
-		}
+		unordered_map<int, int> mp;
+		int ret=num.at(0);
 
-		while(!samevector(num)){
-			count=0;
-			for(vector<int>::iterator it=num.begin(); it!=num.end(); it++){
-				if(count%2==0){
-					tarray.push_back(*it);
+		for(vector<int>::iterator it=num.begin(); it!=num.end(); it++){
+			if(mp.count(*it)){
+				mp[*it]+=1;
+				if(mp[*it]>num.size()/2){
+					ret=*it;
+					break;
 				}
-				count++;
+			} else{
+				mp.insert(std::pair<int, int>(*it, 1));
 			}
-			num.clear();
-			num.insert(num.begin(), tarray.begin(), tarray.end());
-			tarray.clear();
 		}
 
-		return num.at(0);
+		return ret;
 		  
     }
 
@@ -505,7 +500,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	out=::largestNumber(num);
 
 	//majorityElement
-	int majorityElementarray[]={1,2,3,4,5,2,2,2,2,2,0};
+	int majorityElementarray[]={1};
 
 	vector<int> majorityElementVector;
 	for(int i=0; i<sizeof(majorityElementarray)/sizeof(int); i++){
