@@ -474,6 +474,53 @@ vector<int> twoSum(vector<int> &numbers, int target) {
 		return ret;
     }
 
+	//split 13.25.2.6  into vector 13 25 2 6
+	vector<string> refineString(string& str){
+		vector<string> ret;
+		string tvalue;
+		string::iterator rit=str.begin();
+
+		for(string::iterator sit=rit; sit!=str.end(); sit++){
+			if(*sit=='.'){
+				ret.push_back(tvalue);
+				tvalue="";
+				continue;
+			}
+			tvalue+=*sit;
+		}
+
+		ret.push_back(tvalue);
+
+		return ret;
+	}
+
+    int compareVersion(string version1, string version2) {
+	    int ret=0;
+		vector<string> refined1=refineString(version1);
+		vector<string> refined2=refineString(version2);
+
+		vector<string>::iterator sit1=refined1.begin();
+		vector<string>::iterator sit2=refined2.begin();
+
+		int cmp1=0;
+		int cmp2=0;
+
+		while(sit1!=refined1.end() || sit2!=refined2.end()){
+			
+			if(sit1==refined1.end()) cmp1=0;
+			else {cmp1=atoi(sit1->c_str()); sit1++;}
+
+			if(sit2==refined2.end()) cmp2=0;
+			else {cmp2=atoi(sit2->c_str()); sit2++;}
+
+			if(cmp1>cmp2){ret=1; break;}
+			else if(cmp1<cmp2) {ret=-1; break;}
+		}
+
+        return ret;
+    }
+
+
 int _tmain(int argc, _TCHAR* argv[])
 {
 	string out, out1;
@@ -528,6 +575,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	int t=majorityElement(majorityElementVector);
 
 	int inttitleToNumber = titleToNumber("BA");
+
+	int test=compareVersion("1", "1.2");
 
 	return 0;
 }
