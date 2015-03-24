@@ -3,6 +3,7 @@
 
 #include "stdafx.h"
 #include "DataStructure.h"
+#include "MinStack.h"
 
 
 /*
@@ -611,6 +612,24 @@ int _tmain(int argc, _TCHAR* argv[])
 	int inttitleToNumber = titleToNumber("BA");
 
 	int test=compareVersion("1", "1.2");
+
+	MinStack *ms=new MinStack();
+	
+	ms->push(2147483646);
+	ms->push(2147483646);
+	ms->push(2147483647);
+	
+	ms->top();
+	ms->pop();
+	ms->getMin();
+	ms->pop();
+	ms->getMin();
+	ms->pop();
+
+	ms->top();
+	ms->pop();
+	ms->getMin();
+	 	//push(2),push(0),push(3),push(0),getMin,pop,getMin,pop,getMin,pop,getMin
 
 	return 0;
 }

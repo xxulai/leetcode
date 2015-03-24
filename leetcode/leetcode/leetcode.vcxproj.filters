@@ -35,5 +35,8 @@
     <ClCompile Include="leetcode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MinStack.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
