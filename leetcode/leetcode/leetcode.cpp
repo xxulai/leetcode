@@ -520,6 +520,40 @@ vector<int> twoSum(vector<int> &numbers, int target) {
         return ret;
     }
 
+	ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode *ret=NULL;
+        ListNode *pointA=headA;
+        ListNode *pointB=headB;
+        int lengthA=1;
+        int lengthB=1;
+        
+        if(pointA==NULL || pointB==NULL) return NULL;
+        
+        while(pointA->next!=NULL){
+            pointA=pointA->next;
+            lengthA++;
+        }
+        
+        while(pointB->next!=NULL){
+            pointB=pointB->next;
+            lengthB++;
+        }
+        
+        pointA=headA;
+        pointB=headB;
+        
+        for(int i=0;i<(lengthA-lengthB); i++){ pointA=pointA->next; }
+        for(int i=0;i<(lengthB-lengthA); i++){ pointB=pointB->next; }
+        
+        while(pointA!=NULL || pointB!=NULL){
+            
+            if(pointA==pointB) return pointA;
+            else{ pointA=pointA->next; pointB=pointB->next;}
+            
+        }
+        return ret;
+    }
+
 
 int _tmain(int argc, _TCHAR* argv[])
 {
