@@ -5,6 +5,14 @@
 
 4. Implement C++ iterator?
 5. str.c_str()?
+6. NULL nullptr?
+
+
+
+#include "EasyCase.h"
+#include "stdafx.h"
+
+will skip EasyCase.h?
 
 
 C++ string operator table?

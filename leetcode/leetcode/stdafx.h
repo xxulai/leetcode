@@ -6,6 +6,7 @@
 #pragma once
 
 #include "targetver.h"
+#include "DataStructure.h"
 
 #include <stdint.h>
 #include <math.h>

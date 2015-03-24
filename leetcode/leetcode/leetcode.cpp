@@ -2,8 +2,8 @@
 //
 
 #include "stdafx.h"
-#include "DataStructure.h"
 #include "MinStack.h"
+#include "EasyCase.h"
 
 
 /*
@@ -626,10 +626,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	ms->getMin();
 	ms->pop();
 
-	ms->top();
-	ms->pop();
-	ms->getMin();
-	 	//push(2),push(0),push(3),push(0),getMin,pop,getMin,pop,getMin,pop,getMin
+	EasyCase *ec = new EasyCase();
+	ec->isPalindrome("1a2");
 
 	return 0;
 }
