@@ -46,3 +46,11 @@ bool EasyCase::isPalindrome(string s){
 	}
 	return ret;
 }
+
+vector<vector<int>> EasyCase::generate(int numRows) {
+    vector<vector<int>> ret;
+
+
+
+	return ret;
+}
