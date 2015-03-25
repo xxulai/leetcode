@@ -6,5 +6,6 @@ public:
 	bool isPalindrome(string s);
 	vector<vector<int> > generate(int numRows);  //Pascal's Triangle
 	vector<int> getRow(int rowIndex); //Pascal's Triangle II
+	bool hasPathSum(TreeNode *root, int sum);
 
 };
