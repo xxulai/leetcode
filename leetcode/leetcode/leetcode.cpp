@@ -629,6 +629,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	EasyCase *ec = new EasyCase();
 	ec->isPalindrome("1a2");
 
+	vector<vector<int>> generateret=ec->generate(2);
+
 	return 0;
 }
 

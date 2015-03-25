@@ -49,8 +49,41 @@ bool EasyCase::isPalindrome(string s){
 
 vector<vector<int>> EasyCase::generate(int numRows) {
     vector<vector<int>> ret;
+	vector<int> lastRow;
+	vector<int> currentRow;
+
+	lastRow.push_back(1);
+	currentRow.push_back(1);
+	currentRow.push_back(1);
+
+	if(numRows==0) return ret;
+	else if(numRows==1){
+		ret.push_back(lastRow);
+		return ret;
+	} else if(numRows==2){
+		ret.push_back(lastRow);
+		ret.push_back(currentRow);
+		return ret;
+	}
+	
+	ret.push_back(lastRow);
+	ret.push_back(currentRow);
 
 
-
+	lastRow.clear();
+	lastRow.insert(lastRow.begin(), currentRow.begin(), currentRow.end());
+	for(int i=2; i<numRows; i++){
+		currentRow.clear();
+		currentRow.push_back(1);
+    	for(vector<int>::iterator iit=lastRow.begin(); (iit+1)!=lastRow.end(); iit++){
+			currentRow.push_back(*iit+*(iit+1));
+		}
+		
+		currentRow.push_back(1);
+		ret.push_back(currentRow);
+		lastRow.clear();
+		lastRow.insert(lastRow.begin(), currentRow.begin(), currentRow.end());
+	}
+	
 	return ret;
 }
