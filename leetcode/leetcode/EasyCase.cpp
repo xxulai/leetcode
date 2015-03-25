@@ -87,3 +87,11 @@ vector<vector<int>> EasyCase::generate(int numRows) {
 	
 	return ret;
 }
+
+vector<int> EasyCase::getRow(int rowIndex) {
+	vector<int> ret;
+
+
+
+	return ret;
+}
