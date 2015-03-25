@@ -630,6 +630,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	ec->isPalindrome("1a2");
 
 	vector<vector<int>> generateret=ec->generate(2);
+	vector<int> getRowret=ec->getRow(3);
 
 	return 0;
 }
