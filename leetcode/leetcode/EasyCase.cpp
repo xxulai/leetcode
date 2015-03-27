@@ -117,35 +117,15 @@ vector<int> EasyCase::getRow(int rowIndex) {
 	return currentRow;
 }
 
-int pathover(TreeNode *leaf){
-	if(leaf->left==nullptr && leaf->right==nullptr) return leaf->val;
-
-	if(leaf->left!=nullptr) return leaf->val+pathover(leaf->left);
-	if(leaf->right!=nullptr) return leaf->val+pathover(leaf->right);
-}
-
-bool EasyCase::hasPathSum(TreeNode *root, int sum){
-	bool ret=false;
-
-	if(root==nullptr) return false;
-	if(root->val==sum && root->left==nullptr && root->right==nullptr) return true;
-
-	if(root->left!=nullptr){
-		if((root->val+pathover(root->left))==sum)  ret=true;		
-	}
-	if(root->right!=nullptr){
-		if((root->val+pathover(root->right))==sum) ret=true;
-	}
-	return ret;
-}
-
-static bool hasPathSumsample(TreeNode *root, int sum){
+static bool hasPathSum(TreeNode *root, int sum){
 	if(root == NULL)return false;
     if(root->left == NULL && root->right == NULL && root->val == sum)
         return true;
-    if(root->left && hasPathSumsample(root->left, sum - root->val))
+	//detect sub left tree to find the sum
+    if(root->left && hasPathSum(root->left, sum - root->val))
         return true;
-    if(root->right && hasPathSumsample(root->right, sum - root->val))
+	//detect sub right tree to find the sum
+    if(root->right && hasPathSum(root->right, sum - root->val))
         return true;
     return false;
 }
