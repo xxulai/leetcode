@@ -8,6 +8,8 @@
 6. NULL nullptr?
 
 
+in EasyCase.h, didn't put ";" to the end of class, trouble during compile?
+
 
 #include "EasyCase.h"
 #include "stdafx.h"

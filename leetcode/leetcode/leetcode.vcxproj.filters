@@ -30,6 +30,9 @@
     <ClInclude Include="EasyCase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MediumCase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -42,6 +45,9 @@
       <Filter>Header Files</Filter>
     </ClCompile>
     <ClCompile Include="EasyCase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MediumCase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

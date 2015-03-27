@@ -117,7 +117,7 @@ vector<int> EasyCase::getRow(int rowIndex) {
 	return currentRow;
 }
 
-static bool hasPathSum(TreeNode *root, int sum){
+bool EasyCase::hasPathSum(TreeNode *root, int sum){
 	if(root == NULL)return false;
     if(root->left == NULL && root->right == NULL && root->val == sum)
         return true;
