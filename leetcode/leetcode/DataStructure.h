@@ -10,3 +10,9 @@ struct TreeNode {
       TreeNode *right;
       TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
+
+struct TreeNodeList{
+	TreeNode *node;
+	TreeNode *next;
+	TreeNodeList(): node(nullptr), next(nullptr){}
+};

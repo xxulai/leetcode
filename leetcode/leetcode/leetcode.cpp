@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include "MinStack.h"
 #include "EasyCase.h"
+#include "MediumCase.h"
 
 
 /*
@@ -631,6 +632,24 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	vector<vector<int>> generateret=ec->generate(2);
 	vector<int> getRowret=ec->getRow(3);
+
+	MediumCase *mc=new MediumCase();
+	TreeNode *root=new TreeNode(5);
+	TreeNode *left=new TreeNode(1);
+	TreeNode *right=new TreeNode(6);
+
+	root->left=left;
+	root->right=right;
+
+	TreeNode *left1=new TreeNode(2);
+	TreeNode *right1=new TreeNode(3);
+	left->left=left1;
+	left->right=right1;
+
+	TreeNode *left2=new TreeNode(4);
+	left1->left=left2;
+
+	vector<vector<int>> pathSumII=mc->pathSumII(root, 20);
 
 	return 0;
 }
