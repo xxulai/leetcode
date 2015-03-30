@@ -670,7 +670,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	string addBinaryret="";
 
-	addBinaryret=ec->addBinary("10", "1");
+	addBinaryret=ec->addBinary("1010", "1011");
 
 	return 0;
 }

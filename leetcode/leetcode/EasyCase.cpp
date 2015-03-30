@@ -200,32 +200,30 @@ string EasyCase::addBinary(string a, string b) {
         vector<int> blist;
         vector<int> sumlist;
         
-        for(string::iterator sit=a.begin(); sit!=a.end(); sit++)
+        for(string::reverse_iterator sit=a.rbegin(); sit!=a.rend(); sit++)
 			if(*sit=='1') alist.push_back(1);
 			else alist.push_back(0);
             
-        for(string::iterator sit=b.begin(); sit!=b.end(); sit++)
+        for(string::reverse_iterator sit=b.rbegin(); sit!=b.rend(); sit++)
             if(*sit=='1') blist.push_back(1);
 			else blist.push_back(0);
         
         int length=alist.size()<blist.size()?alist.size():blist.size();
         
-
-
-        for(int i=length-1; i>=0; i--){
+        for(int i=0; i<length; i++){
             if(alist.at(i)+blist.at(i)+carry>=2){
-                carry=1;
                 sumlist.push_back(alist.at(i)+blist.at(i)+carry-2);
+				carry=1;
             } else {
                 sumlist.push_back(alist.at(i)+blist.at(i));
                 carry=0;
             }
         }
         
-        length=abs((int)blist.size()-(int)alist.size());
+        int difflength=abs((int)blist.size()-(int)alist.size());
         
-        if(blist.size()>alist.size()){
-            for(int i=length-1; i>=0; i--)
+        if(alist.size()<blist.size()){
+            for(int i=length; i<length+difflength; i++)
             {
                 if(carry+blist.at(i)==2){
                     sumlist.push_back(0);
@@ -239,7 +237,7 @@ string EasyCase::addBinary(string a, string b) {
         }
         
         if(alist.size()>blist.size()){
-            for(int i=length-1; i>=0; i--)
+            for(int i=length; i<length+difflength; i++)
             {
                 if(carry+alist.at(i)==2){
                     sumlist.push_back(0);
@@ -256,9 +254,7 @@ string EasyCase::addBinary(string a, string b) {
         
         for(vector<int>::reverse_iterator rit=sumlist.rbegin(); rit!=sumlist.rend(); rit++)
 		{
-			char* t;
-			itoa(*rit, t, 10);
-			ret+=t;
+			ret+=std::to_string((_ULonglong)*rit);
 		}
             
         
