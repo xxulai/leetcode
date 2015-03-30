@@ -129,3 +129,33 @@ bool EasyCase::hasPathSum(TreeNode *root, int sum){
         return true;
     return false;
 }
+
+ListNode *EasyCase::deleteDuplicates(ListNode *head) {
+        unordered_map<int, int> mp;
+        ListNode* p1=head;
+		ListNode* p2=head;
+        
+        if(p1==nullptr) return nullptr;
+		
+		p2=p1->next;
+		mp.insert(pair<int, int>(p1->val, 1));
+
+        while(p2!=nullptr){
+            if(mp.count(p2->val)) 
+			{
+				if(p2->next==nullptr) p1->next=nullptr;
+				else {
+				   p1->next=p2->next;
+				   p2=p1->next;
+				   continue;
+				}
+			}
+            else mp.insert(pair<int, int>(p2->val, 1));
+            
+            p1=p1->next;
+			p2=p2->next;
+        }
+        
+        return head;
+        
+    }

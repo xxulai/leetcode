@@ -651,6 +651,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	vector<vector<int>> pathSumII=mc->pathSumII(root, 20);
 
+	ListNode *head=new ListNode(1);
+	ListNode *p1=new ListNode(1);
+	ListNode *p2=new ListNode(1);
+
+	head->next=p1;
+	p1->next=p2;
+
+	head=ec->deleteDuplicates(head);
+
 	return 0;
 }
 
