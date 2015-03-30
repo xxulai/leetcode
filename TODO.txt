@@ -11,6 +11,9 @@
 head != NULL && mp[head->val]!=1   ok if head==NULL
 mp[head->val]!=1 && head != NULL   exception if head=NULL
 
+vector<int>::reverse_iterator rit=digits.rbegin(); rit!=digits.rend(); rit++
+vector<int>::iterator it=digits.end(); it!=digits.begin(); it++                  Wrong?!!!!
+
 
 in EasyCase.h, didn't put ";" to the end of class, trouble during compile?
 

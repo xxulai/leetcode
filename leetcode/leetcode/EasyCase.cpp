@@ -168,3 +168,26 @@ int EasyCase::trailingZeroes(int n) {
     }        
     return count;
 }
+
+vector<int> EasyCase::plusOne(vector<int> &digits) {
+        int carry=0;
+        
+        for(vector<int>::reverse_iterator rit=digits.rbegin(); rit!=digits.rend(); rit++){
+			if(rit==digits.rbegin()){
+				if(*rit+1==10){
+					carry=1;
+					*rit=0;
+				} else *rit=*rit+1;
+			} else if(*rit+carry==10){
+				*rit=0;
+				carry=1;
+			} else{
+				*rit+=carry;
+				carry=0;
+			}
+        }
+        
+        if(carry==1) digits.insert(digits.begin(), 1);
+        
+        return digits;
+    }

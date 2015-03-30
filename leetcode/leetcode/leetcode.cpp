@@ -660,6 +660,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	head=mc->deleteDuplicatesII(head);
 
+	vector<int> tc;
+	tc.push_back(8);
+	tc.push_back(9);
+	tc.push_back(9);
+	
+	tc=ec->plusOne(tc);
+
+
 	return 0;
 }
 

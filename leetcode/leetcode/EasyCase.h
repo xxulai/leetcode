@@ -9,4 +9,5 @@ public:
 	bool hasPathSum(TreeNode *root, int sum); //Path Sum
 	ListNode *deleteDuplicates(ListNode *head); //Remove Duplicates from Sorted List
 	int trailingZeroes(int n); //trailingZeros, count prime number of 5 , how many 5s in the given number
+	vector<int> plusOne(vector<int> &digits); //Given a non-negative number represented as an array of digits, plus one to the number.  {1, 0} -> {1, 1}
 };
