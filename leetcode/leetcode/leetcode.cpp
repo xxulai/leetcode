@@ -658,7 +658,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	head->next=p1;
 	p1->next=p2;
 
-	head=ec->deleteDuplicates(head);
+	head=mc->deleteDuplicatesII(head);
 
 	return 0;
 }

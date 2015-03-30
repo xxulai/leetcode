@@ -38,3 +38,53 @@ int MediumCase::minimumTotal(vector<vector<int> > &triangle){
 	return ret;
 }
 
+ListNode *MediumCase::deleteDuplicatesII(ListNode *head) {
+
+	unordered_map<int, int> mp;
+    ListNode* p1=head;
+	ListNode* p2=head;
+        
+    if(p1==NULL) return NULL;
+	
+	p2=p1->next;
+	mp.insert(pair<int, int>(p1->val, 1));
+
+    while(p2!=NULL){
+        if(mp.count(p2->val)) 
+		{
+		    mp[p2->val]+=1;
+			if(p2->next==NULL) p1->next=NULL;
+			else {
+			   p1->next=p2->next;
+			   p2=p1->next;
+			   continue;
+			}
+		}
+        else mp.insert(pair<int, int>(p2->val, 1));
+            
+        p1=p1->next;
+		p2=p2->next;
+    }
+        
+    while(head != NULL && mp[head->val]!=1){
+        head=head->next;
+    }
+        
+    if(head==NULL) return head;
+       
+    p1=head;
+    p2=p1->next;
+        
+    while(p2!=NULL){
+        if(mp[p2->val]>1){
+            p1->next=p2->next;
+            p2=p1->next;
+        } else {
+            p1=p1->next;
+            p2=p2->next;
+        }
+    }
+        
+    return head;
+}
+

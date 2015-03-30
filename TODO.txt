@@ -8,6 +8,10 @@
 6. NULL nullptr?
 
 
+head != NULL && mp[head->val]!=1   ok if head==NULL
+mp[head->val]!=1 && head != NULL   exception if head=NULL
+
+
 in EasyCase.h, didn't put ";" to the end of class, trouble during compile?
 
 
