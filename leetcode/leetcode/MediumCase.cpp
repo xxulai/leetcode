@@ -30,3 +30,11 @@ vector<vector<int>> MediumCase::pathSumII(TreeNode *root, int sum){
 	return ret;
 }
 
+int MediumCase::minimumTotal(vector<vector<int> > &triangle){
+	int ret;
+
+
+
+	return ret;
+}
+
