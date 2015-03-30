@@ -191,3 +191,76 @@ vector<int> EasyCase::plusOne(vector<int> &digits) {
         
         return digits;
     }
+
+
+string EasyCase::addBinary(string a, string b) {
+        int carry=0;
+        string ret="";
+        vector<int> alist;
+        vector<int> blist;
+        vector<int> sumlist;
+        
+        for(string::iterator sit=a.begin(); sit!=a.end(); sit++)
+			if(*sit=='1') alist.push_back(1);
+			else alist.push_back(0);
+            
+        for(string::iterator sit=b.begin(); sit!=b.end(); sit++)
+            if(*sit=='1') blist.push_back(1);
+			else blist.push_back(0);
+        
+        int length=alist.size()<blist.size()?alist.size():blist.size();
+        
+
+
+        for(int i=length-1; i>=0; i--){
+            if(alist.at(i)+blist.at(i)+carry>=2){
+                carry=1;
+                sumlist.push_back(alist.at(i)+blist.at(i)+carry-2);
+            } else {
+                sumlist.push_back(alist.at(i)+blist.at(i));
+                carry=0;
+            }
+        }
+        
+        length=abs((int)blist.size()-(int)alist.size());
+        
+        if(blist.size()>alist.size()){
+            for(int i=length-1; i>=0; i--)
+            {
+                if(carry+blist.at(i)==2){
+                    sumlist.push_back(0);
+                    carry=1;
+                }
+                else{
+                    sumlist.push_back(carry+blist.at(i));
+                    carry=0;
+                }
+            }
+        }
+        
+        if(alist.size()>blist.size()){
+            for(int i=length-1; i>=0; i--)
+            {
+                if(carry+alist.at(i)==2){
+                    sumlist.push_back(0);
+                    carry=1;
+                }
+                else{
+                    sumlist.push_back(carry+alist.at(i));
+                    carry=0;
+                }
+            }
+        }
+        
+        if(carry==1) sumlist.push_back(1);
+        
+        for(vector<int>::reverse_iterator rit=sumlist.rbegin(); rit!=sumlist.rend(); rit++)
+		{
+			char* t;
+			itoa(*rit, t, 10);
+			ret+=t;
+		}
+            
+        
+        return ret;
+    }

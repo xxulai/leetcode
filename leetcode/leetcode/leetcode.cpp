@@ -661,12 +661,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	head=mc->deleteDuplicatesII(head);
 
 	vector<int> tc;
-	tc.push_back(8);
-	tc.push_back(9);
-	tc.push_back(9);
+	tc.push_back(1);
+	tc.push_back(0);
+	vector<int> tc2;
+	tc2.push_back(1);
 	
 	tc=ec->plusOne(tc);
 
+	string addBinaryret="";
+
+	addBinaryret=ec->addBinary("10", "1");
 
 	return 0;
 }
