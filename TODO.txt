@@ -17,6 +17,8 @@ vector<int>::iterator it=digits.end(); it!=digits.begin(); it++                 
 
 in EasyCase.h, didn't put ";" to the end of class, trouble during compile?
 
+DP Dynamic Programming?
+
 
 #include "EasyCase.h"
 #include "stdafx.h"

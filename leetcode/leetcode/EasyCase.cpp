@@ -260,3 +260,21 @@ string EasyCase::addBinary(string a, string b) {
         
         return ret;
     }
+
+int EasyCase::lengthOfLastWord(const char *s)
+{
+	string str=s;
+	vector<char> strvec;
+
+	if(str=="") return 0;
+
+	for(string::reverse_iterator rit=str.rbegin(); rit!=str.rend(); rit++){
+
+		if(*rit==' ' && strvec.size()==0) continue; //skip ending space
+
+		if(*rit!=' ') strvec.push_back(*rit);
+		else break;
+	}
+
+	return strvec.size();
+}

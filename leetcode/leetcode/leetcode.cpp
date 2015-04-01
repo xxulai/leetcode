@@ -672,6 +672,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	addBinaryret=ec->addBinary("101111", "10");
 
+	int intlengthOfLastWord=ec->lengthOfLastWord("a ");
+
 	return 0;
 }
 
