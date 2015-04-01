@@ -215,7 +215,7 @@ string EasyCase::addBinary(string a, string b) {
                 sumlist.push_back(alist.at(i)+blist.at(i)+carry-2);
 				carry=1;
             } else {
-                sumlist.push_back(alist.at(i)+blist.at(i));
+                sumlist.push_back(alist.at(i)+blist.at(i)+carry);
                 carry=0;
             }
         }
