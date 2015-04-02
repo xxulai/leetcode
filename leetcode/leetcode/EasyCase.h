@@ -16,5 +16,7 @@ public:
     string translate(string s);
 	string countAndSay(int n); //1, 11, 21, 1211, 111221, ..  21 is read off as "one 2, then one 1" or 1211.
 
-	int strStr(char *haystack, char *needle); //Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack. 
+	int strStr(char *haystack, char *needle); //Returns the index of the first occurrence of needle in haystack, or -1 if needle is not part of haystack.
+
+	int removeElement(int A[], int n, int elem); //Given an array and a value, remove all instances of that value in place and return the new length. 
 };
