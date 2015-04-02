@@ -380,3 +380,21 @@ int EasyCase::removeElement(int A[], int n, int elem) {
             if(A[i]!=elem)A[num++]=A[i];  
         return num; 
 }
+
+int EasyCase::removeDuplicates(int A[], int n) {
+        int pre, cur;  
+      pre = 1; cur = 1;  
+      if(n <=1) return n;  
+      while(cur<n)  
+      {  
+        if(A[cur] == A[cur-1])  
+        {  
+          cur++;  
+          continue;  
+        }  
+        A[pre] = A[cur];  
+        pre++;  
+        cur++;  
+      }  
+     return pre;  
+}
