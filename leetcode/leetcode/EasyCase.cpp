@@ -278,3 +278,67 @@ int EasyCase::lengthOfLastWord(const char *s)
 
 	return strvec.size();
 }
+
+
+string EasyCase::translate(string s){
+        unordered_map<int, char> mp;
+        vector<vector<char>> arr;
+        vector<char> tarr;
+        string ret="";
+        int count=0;
+        
+        for(int i=0; i<10; i++)
+        {
+            mp.insert(pair<int, char>(i, '0'+i));
+        }
+
+		tarr.push_back(*s.begin());
+        for(string::iterator sit=s.begin()+1; sit!=s.end(); sit++){
+			if(*sit == tarr.at(0)) {
+				tarr.push_back(*sit);
+				continue;
+			}
+            else{
+                arr.push_back(tarr);
+                tarr.clear();
+				tarr.push_back(*(sit));
+            }
+        }
+
+		if(tarr.size()!=0) arr.push_back(tarr);
+        
+		
+        for(int i=0; i<arr.size(); i++){
+            for(int j=0; j<arr.at(i).size(); j++){
+                count++;
+            }
+			stringstream ss1, ss2;
+			ss1<<mp[count];
+			ss2<<arr.at(i).at(0);
+			string str1, str2;
+			ss1>>str1;
+			ss2>>str2;
+			
+			ret+=str1+str2;		
+
+            count=0;
+        }
+        
+        return ret;
+    }
+
+string EasyCase::countAndSay(int n) {
+        
+        if(n==0) return "";
+        
+        string ret="";
+        vector<char> charray;
+
+		ret="1";
+
+		for(int i=1; i<n ;i++){
+			ret=translate(ret);
+		}
+        
+        return ret;
+}

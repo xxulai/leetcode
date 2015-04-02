@@ -12,4 +12,7 @@ public:
 	vector<int> plusOne(vector<int> &digits); //Given a non-negative number represented as an array of digits, plus one to the number.  {1, 0} -> {1, 1}
 	string addBinary(string a, string b); //Given two binary strings, return their sum (also a binary string).  11+1=100
 	int lengthOfLastWord(const char *s); //Given a string s consists of upper/lower-case alphabets and empty space characters ' ', return the length of last word in the string.
+
+    string translate(string s);
+	string countAndSay(int n);
 };
