@@ -342,3 +342,34 @@ string EasyCase::countAndSay(int n) {
         
         return ret;
 }
+
+int EasyCase::strStr(char *haystack, char *needle) {
+        
+        if(haystack==NULL || needle==NULL) return -1;
+        
+        string hstack(haystack);
+        string ndle(needle);
+		bool match=true;
+
+		if(hstack==ndle || ndle=="") return 0;
+
+		for(string::iterator sit=hstack.begin(); sit!=hstack.end(); sit++){
+			if(*sit==*ndle.begin()){
+				match=true;
+				//find match sub string
+				for(int i=0; i<ndle.size(); i++){
+					if((sit+i)!=hstack.end()){
+						if(*(sit+i)!=*(ndle.begin()+i)){
+							match=false;
+							break;
+						}
+					}
+					else return -1;
+				}
+
+				if(match) return sit-hstack.begin();
+			}
+		}
+        
+        return -1;
+    }

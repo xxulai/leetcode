@@ -675,6 +675,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	int intlengthOfLastWord=ec->lengthOfLastWord("a ");
 
 	string strtranslate=ec->countAndSay(6);
+	char *cp1="";
+	char *cp2="a";
+	int istrStr=ec->strStr(cp1, cp2);
 
 	return 0;
 }
