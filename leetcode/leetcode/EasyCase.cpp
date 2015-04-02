@@ -382,7 +382,7 @@ int EasyCase::removeElement(int A[], int n, int elem) {
 }
 
 int EasyCase::removeDuplicates(int A[], int n) {
-        int pre, cur;  
+      int pre, cur;  
       pre = 1; cur = 1;  
       if(n <=1) return n;  
       while(cur<n)  
