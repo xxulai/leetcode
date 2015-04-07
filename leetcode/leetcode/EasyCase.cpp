@@ -436,3 +436,17 @@ string EasyCase::convert(string s, int nRows) {
 		   
         return ret;
     }
+
+//when input is large enough, reverse it will still cause overflow problem
+int EasyCase::reverse(int x) {
+        int ret=0;
+        int buf=x;
+
+        while(x!=0){
+            ret=ret*10+x%10;
+            x=x/10;
+			if((x>0 && ret>(INT_MAX/10)) || (x<0 && abs(ret)>abs(INT_MIN/10))) return 0;
+        }
+        
+        return ret;
+    }
