@@ -20,4 +20,5 @@ public:
 
 	int removeElement(int A[], int n, int elem); //Given an array and a value, remove all instances of that value in place and return the new length. 
 	int removeDuplicates(int A[], int n); //Given a sorted array, remove the duplicates in place such that each element appear only once, A = [1,1,2], length = 2, and A is now [1,2]. 
+	string convert(string s, int nRows); //convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 };

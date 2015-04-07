@@ -679,6 +679,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	char *cp2="a";
 	int istrStr=ec->strStr(cp1, cp2);
 
+	string strzigzag=ec->convert("PAYPALISHIRING",3);
+
 	return 0;
 }
 

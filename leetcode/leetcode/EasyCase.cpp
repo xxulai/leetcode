@@ -398,3 +398,41 @@ int EasyCase::removeDuplicates(int A[], int n) {
       }  
      return pre;  
 }
+
+string EasyCase::convert(string s, int nRows) {
+        vector<vector<char>> vec;
+		vector<char> tvec;
+        string ret="";
+		int step=0;
+
+		for(int i=0; i<nRows; i++)
+		{
+			for(string::iterator sit=s.begin()+i; sit!=s.end();){
+				tvec.push_back(*sit);
+
+				if(i==0 || i==nRows-1){
+					if((s.end()-sit)>=nRows)
+						step=nRows+1;
+					else
+						break;
+				} else{
+					if((s.end()-sit)>=nRows)
+						step=nRows-1;
+					else
+						break;
+					
+				}
+				sit+=step;
+			}
+			vec.push_back(tvec);
+			tvec.clear();
+		}
+
+		for(int i=0; i<vec.size(); i++)
+			for(vector<char>::iterator it=vec.at(i).begin(); it<vec.at(i).end(); it++)
+			{
+				ret+=*it;
+			}
+		   
+        return ret;
+    }
