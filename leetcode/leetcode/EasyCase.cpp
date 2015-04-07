@@ -450,3 +450,26 @@ int EasyCase::reverse(int x) {
         
         return ret;
     }
+
+int EasyCase::atoi(string str) {
+		int ret=0;
+		bool isMinus=false;
+
+		for(string::iterator sit=str.begin(); sit!=str.end(); sit++){
+			if(sit==str.begin() && *sit=='-') {
+				isMinus=true;
+				continue;
+			}
+			if(*sit<'0' || *sit>'9') return 0;
+		}
+
+		string::iterator start=isMinus?str.begin()+1:str.begin();
+
+        for(string::iterator sit=start; sit!=str.end(); sit++){
+			ret=ret*10+(*sit-48);
+			if((!isMinus && ret>(INT_MAX/10)) || (isMinus && ret>abs(INT_MIN/10))) return 0;
+		}
+		if(isMinus) ret=ret*-1;
+
+		return ret;
+    }

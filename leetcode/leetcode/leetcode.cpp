@@ -683,6 +683,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	int reverseint=ec->reverse(1534236469);
 	reverseint=ec->reverse(-2147483412);
 
+	int intatoi=ec->atoi("-2147483412");
+
 	return 0;
 }
 

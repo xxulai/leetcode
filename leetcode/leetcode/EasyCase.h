@@ -22,4 +22,5 @@ public:
 	int removeDuplicates(int A[], int n); //Given a sorted array, remove the duplicates in place such that each element appear only once, A = [1,1,2], length = 2, and A is now [1,2]. 
 	string convert(string s, int nRows); //convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 	int reverse(int x); //321->123
+	int atoi(string str); //string to integer
 };
