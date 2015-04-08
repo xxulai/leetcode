@@ -453,23 +453,46 @@ int EasyCase::reverse(int x) {
 
 int EasyCase::atoi(string str) {
 		int ret=0;
-		bool isMinus=false;
+		string hasflag="";
+		string::iterator start=str.begin();
+		string::iterator endpos=str.end();
 
-		for(string::iterator sit=str.begin(); sit!=str.end(); sit++){
-			if(sit==str.begin() && *sit=='-') {
-				isMinus=true;
-				continue;
+		if(str=="") return 0;
+
+		//remove heading space
+		for(string::iterator it=str.begin(); it!=str.end(); it++){
+			if(*it==' ') continue;
+			else {
+			  start=it;
+			  break;
 			}
-			if(*sit<'0' || *sit>'9') return 0;
+		}
+		//start with flag
+		if((*start=='+' || *start=='-') && *(start+1)>='0' && *(start+1)<='9')
+		{
+			hasflag=*start;
+			start++;
+		}
+		else if(*start=='+' || *start=='-')  //illeagal char after + -
+			return 0;
+
+		//find as many numeric value as possible
+		for(string::iterator it=start; it!=str.end(); it++){
+			if(*(it)>='0' && *(it)<='9') continue;
+			else endpos=it;
 		}
 
-		string::iterator start=isMinus?str.begin()+1:str.begin();
-
-        for(string::iterator sit=start; sit!=str.end(); sit++){
-			ret=ret*10+(*sit-48);
-			if((!isMinus && ret>(INT_MAX/10)) || (isMinus && ret>abs(INT_MIN/10))) return 0;
+		for(string::iterator it=start; it!=endpos; it++){
+			ret=ret*10+(*it-48);
+			if((hasflag=="+"||hasflag=="") && ret>=(INT_MAX)/10) 
+				if((*(it+1)-48)>INT_MAX%10)
+				   return INT_MAX;
+			else if(hasflag=="-" && ret>=abs(INT_MIN/10))
+				if((*(it+1)-48)>abs(INT_MIN%10))
+					return INT_MIN;
 		}
-		if(isMinus) ret=ret*-1;
+
+		if(hasflag=="-") ret=ret*-1;
 
 		return ret;
     }
