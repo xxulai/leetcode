@@ -681,9 +681,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	string strzigzag=ec->convert("PAYPALISHIRING",3);
 	int reverseint=ec->reverse(1534236469);
-	reverseint=ec->reverse(-2147483412);
+	reverseint=ec->reverse(2147483647);
 
-	int intatoi=ec->atoi("-2147483649");
+	int intatoi=ec->atoi("-2147483647");
 
 	return 0;
 }

@@ -455,7 +455,7 @@ int EasyCase::atoi(string str) {
 		int ret=0;
 		string hasflag="";
 		string::iterator start=str.begin();
-		string::iterator endpos=str.end();
+		string::iterator endpos=str.begin();
 
 		if(str=="") return 0;
 
@@ -477,19 +477,30 @@ int EasyCase::atoi(string str) {
 			return 0;
 
 		//find as many numeric value as possible
+		string strbuf="";
 		for(string::iterator it=start; it!=str.end(); it++){
-			if(*(it)>='0' && *(it)<='9') continue;
-			else endpos=it;
+			if(*(it)>='0' && *(it)<='9'){
+				strbuf+=*it;
+				continue;
+			}
+			else break;
 		}
 
-		for(string::iterator it=start; it!=endpos; it++){
+		
+
+		for(string::iterator it=strbuf.begin(); it!=strbuf.end(); it++){
+			if(hasflag=="-" && ret>abs(INT_MIN+1)/10) return INT_MIN;
+			else if(hasflag!="-" && ret>(INT_MAX)/10) return INT_MAX;
+
+			if(hasflag=="-" && ret==abs(INT_MIN+1)/10) 
+			{  //remove { } excution change!!!!!
+				if((it+1)!=strbuf.end() || (*it-48)>=abs(INT_MIN+1)%10+1) 
+					return INT_MIN;  //left more than 2 digits or number is bigger than 8
+			} else if(hasflag!="-" && ret==(INT_MAX)/10){
+				if((it+1)!=strbuf.end() || (*it-48)>=abs(INT_MAX)%10) 
+					return INT_MAX;
+			}
 			ret=ret*10+(*it-48);
-			if((hasflag=="+"||hasflag=="") && ret>=(INT_MAX)/10) 
-				if((*(it+1)-48)>INT_MAX%10)
-				   return INT_MAX;
-			else if(hasflag=="-" && ret>=abs(INT_MIN/10))
-				if((*(it+1)-48)>abs(INT_MIN%10))
-					return INT_MIN;
 		}
 
 		if(hasflag=="-") ret=ret*-1;
