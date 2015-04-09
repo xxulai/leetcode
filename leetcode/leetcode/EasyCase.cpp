@@ -485,9 +485,15 @@ int EasyCase::atoi(string str) {
 			}
 			else break;
 		}
-
-		
-
+		/*
+		*  number   1       2          3456789  /
+		*         begin() begin()+1            end()
+		*
+		*   every iterator only 1 char, 
+		*   it=begin()--> it->123456789
+		*   it+1 -> 23456789
+		*   it=end() --> it->/
+		*/
 		for(string::iterator it=strbuf.begin(); it!=strbuf.end(); it++){
 			if(hasflag=="-" && ret>abs(INT_MIN+1)/10) return INT_MIN;
 			else if(hasflag!="-" && ret>(INT_MAX)/10) return INT_MAX;
