@@ -30,4 +30,5 @@ public:
 	int atoi(string str); 
 
 	bool isPalindrome(int x); //int is Palindrome or not
+	string longestCommonPrefix(vector<string> &strs); //input {abc, ab, a} output {a}
 };

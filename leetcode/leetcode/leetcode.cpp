@@ -686,6 +686,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	int intatoi=ec->atoi("-2147483647");
 	bool isPal=ec->isPalindrome(0);
 
+	vector<string> vstrcommon;
+	vstrcommon.push_back("a");
+	vstrcommon.push_back("a");
+	vstrcommon.push_back("a");
+	string strcommon=ec->longestCommonPrefix(vstrcommon);
+
+	string tt="123456";
+	char cc=tt[2]; //cc='3'
+
 	return 0;
 }
 

@@ -537,3 +537,46 @@ bool EasyCase::isPalindrome(int x) {
 
 	return strbuf==rstrbuf?true:false;
 }
+
+string EasyCase::longestCommonPrefix(vector<string> &strs) {
+        
+        if(strs.size()==0) return "";
+        
+        int len=strs[0].length();
+        
+		for(int i=1; i<strs.size(); i++)
+        {
+            for(int j=0; j<len; j++)
+			{
+				//Important!!!  for a string strs[i], strs[i][j] is corresponding to the jth char in the string!!!
+                if(strs[0][j]==strs[i][j]) {
+                    continue;
+                }
+                else {
+                    len=j;
+                    break;
+                }
+            }
+        }
+
+		//int count=0;
+        //string::iterator tit=strs[0].begin();
+		/*for(int i=1; i<strs.size(); i++)
+        {
+            for(string::iterator sit=strs.at(i).begin(); sit!=strs.at(i).begin()+len; sit++)
+            {
+                if(*sit==*(tit+count)) {
+                    count++;
+                    continue;
+                }
+                else {
+                    len=sit-strs.at(i).begin();
+                    break;
+                }
+            }
+			count=0;
+        }*/
+        
+        
+        return strs[0].substr(0, len);
+}
