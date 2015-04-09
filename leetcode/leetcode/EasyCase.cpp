@@ -570,7 +570,7 @@ string EasyCase::longestCommonPrefix(vector<string> &strs) {
                     continue;
                 }
                 else {
-                    len=sit-strs.at(i).begin();
+                    len=sit-strs.at(i).begin();-
                     break;
                 }
             }
@@ -580,3 +580,31 @@ string EasyCase::longestCommonPrefix(vector<string> &strs) {
         
         return strs[0].substr(0, len);
 }
+
+    ListNode *EasyCase::removeNthFromEnd(ListNode *head, int n) {
+        int len=0;
+		ListNode *thead=head;
+        
+		while(thead!=NULL){
+            len++;
+            thead=thead->next;
+        }
+
+		if(head==NULL || len<n) return NULL;
+
+        if(len==n){
+			head=head->next;
+			return head;
+		}
+
+		if(n==0) return head;
+
+        thead=head;
+        for(int i=0; i<len-n-1; i++){
+			//Move to previous pos of the node to be deleted
+            thead=thead->next;
+        }
+		thead->next=thead->next->next;
+
+        return head;
+    }

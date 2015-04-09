@@ -695,6 +695,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	string tt="123456";
 	char cc=tt[2]; //cc='3'
 
+	ListNode *rhead=new ListNode(1);
+	ListNode *head1=new ListNode(2);
+	ListNode *head2=new ListNode(3);
+
+	rhead->next=head1;
+	//head1->next=head2;
+
+	rhead=ec->removeNthFromEnd(rhead, 1);
+
 	return 0;
 }
 

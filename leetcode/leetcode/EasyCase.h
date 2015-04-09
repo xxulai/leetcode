@@ -31,4 +31,5 @@ public:
 
 	bool isPalindrome(int x); //int is Palindrome or not
 	string longestCommonPrefix(vector<string> &strs); //input {abc, ab, a} output {a}
+	ListNode *removeNthFromEnd(ListNode *head, int n); //Given linked list: 1->2->3->4->5, and n = 2.  output 1->2->3->5
 };
