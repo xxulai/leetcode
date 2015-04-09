@@ -684,6 +684,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	reverseint=ec->reverse(2147483647);
 
 	int intatoi=ec->atoi("-2147483647");
+	bool isPal=ec->isPalindrome(0);
 
 	return 0;
 }

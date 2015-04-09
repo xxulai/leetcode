@@ -513,3 +513,27 @@ int EasyCase::atoi(string str) {
 
 		return ret;
     }
+
+bool EasyCase::isPalindrome(int x) {
+
+	if(x<0) return false;
+
+    string strbuf="";
+    unordered_map<int, char> mp;
+        
+    for(int i=0; i<=9; i++){
+       mp.insert(pair<int, char>(i, i+48));
+    }
+        
+    while(x!=0){
+        strbuf+=mp[x%10];
+        x=x/10;
+    }
+        
+    string rstrbuf="";
+	for(string::reverse_iterator rit=strbuf.rbegin(); rit!=strbuf.rend(); rit++){
+		rstrbuf+=*rit;
+	}
+
+	return strbuf==rstrbuf?true:false;
+}

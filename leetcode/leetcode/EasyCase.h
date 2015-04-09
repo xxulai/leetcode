@@ -28,4 +28,6 @@ public:
 	and interprets them as a numerical value.
 	*/
 	int atoi(string str); 
+
+	bool isPalindrome(int x); //int is Palindrome or not
 };
