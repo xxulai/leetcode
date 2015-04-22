@@ -608,3 +608,30 @@ string EasyCase::longestCommonPrefix(vector<string> &strs) {
 
         return head;
     }
+
+bool EasyCase::isHappy(int n) {
+        int result=0;
+        vector<int> cal;
+        
+        for(int i=0; i<1000; i++){
+            while(n!=0){
+                cal.push_back(n%10);
+                n=n/10;
+            }
+            
+            for(int i=0; i<cal.size(); i++){
+                result+=(int)pow((double)cal.at(i),2.0);
+            }
+            
+            if(result==1) break;
+            else {
+				n=result; 
+				result=0;
+				cal.clear();
+			}
+            
+        }
+        
+        if(result==1) return true;
+        else return false;
+}

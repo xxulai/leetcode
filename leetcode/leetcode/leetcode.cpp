@@ -704,6 +704,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	rhead=ec->removeNthFromEnd(rhead, 1);
 
+	bool flaghappy=ec->isHappy(7);
+
 	return 0;
 }
 
