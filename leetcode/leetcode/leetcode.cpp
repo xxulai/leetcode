@@ -714,6 +714,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	ec->countPrimes(5);
 
+	string strfrac=mc->fractionToDecimal(1, 99);
+
 	return 0;
 }
 

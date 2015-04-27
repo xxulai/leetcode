@@ -11,6 +11,7 @@ public:
 	  */
 	  int rangeBitwiseAnd(int m, int n);
 	  int rangeBitwiseAndSample(int m, int n); //sample program for rangeBitwiseAnd
+	  string fractionToDecimal(int numerator, int denominator); //Given two integers representing the numerator and denominator of a fraction, return the fraction in string format. Given numerator = 2, denominator = 3, return "0.(6)".
 private: 
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };
