@@ -712,6 +712,8 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	mc->rangeBitwiseAnd(2147483646, 2147483647);
 
+	ec->countPrimes(5);
+
 	return 0;
 }
 

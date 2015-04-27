@@ -665,3 +665,66 @@ ListNode* EasyCase::removeElements(ListNode* head, int val) {
         
         return head;
 }
+
+int EasyCase::countPrimes(int n) {
+        //vector<bool> isprimevec;  vector has perfomance problem when there are too much elements, say 3,000,000
+		bool *isprimevec=new bool[n]; 
+        int count=0;
+        int lastprime=2;
+        int buf=0;
+        bool isprime=true;
+        
+        if(n<=2) return 0;
+        
+        for(int i=0; i<=n; i++){
+            isprimevec[i]=true;
+        }
+		isprimevec[0]=false;
+        isprimevec[1]=false;
+
+        
+        //mark 2 as first prime, index=2
+        buf=2;
+		int maxinvec=n;
+        while(maxinvec>=(int)pow(lastprime, 2.0)){
+            //find first prime
+            for(int i=lastprime; i<=n; i++){
+                if(!isprimevec[i]) continue;
+                else {
+                    for(int k=2; k<=i/2; k++){
+                        if(i%k==0) {
+                            isprime=false;
+                            break;
+                        }
+                    }
+                    if(isprime) {
+                        lastprime=i;
+                        break;
+                    }
+                }
+            }
+            
+            int cnt=2;
+            buf=lastprime;
+            //mark prime
+            while(buf<=n){
+				buf=lastprime*cnt;
+                isprimevec[buf]=false;
+                cnt++;
+            }
+
+			//find maxinvec
+			for(int i=n; i>0; i--){
+				if(isprimevec[i]) {
+					maxinvec=i;
+					break;
+				}		
+			}      
+			lastprime++;
+		}
+        for(int i=0; i<=n; i++){
+            if(isprimevec[i]) count++;
+        }
+        
+        return count;
+    }
