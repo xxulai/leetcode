@@ -45,5 +45,5 @@ public:
 		12 + 02 + 02 = 1
 	*/
 	bool isHappy(int n); //happy number
-
+	ListNode* removeElements(ListNode* head, int val);//Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6   Return: 1 --> 2 --> 3 --> 4 --> 5 
 };

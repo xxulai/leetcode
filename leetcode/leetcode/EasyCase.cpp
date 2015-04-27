@@ -635,3 +635,33 @@ bool EasyCase::isHappy(int n) {
         if(result==1) return true;
         else return false;
 }
+
+ListNode* EasyCase::removeElements(ListNode* head, int val) {
+        if(head==NULL) return NULL;
+        if(head->next==NULL){
+            if(head->val==val) return NULL;
+            else return head;
+        }
+        
+        ListNode* pre=head;
+        ListNode* cur=head->next;
+        //remove head
+        while(pre->val==val){
+            pre=pre->next;
+            if(pre==NULL) return NULL;
+            else cur=cur->next;
+            head=pre;
+        }
+        
+        while(cur!=NULL){
+            if(cur->val==val){
+                cur=cur->next;
+                pre->next=cur;
+            } else{
+                pre=pre->next;
+                cur=cur->next;
+            }
+        }
+        
+        return head;
+}
