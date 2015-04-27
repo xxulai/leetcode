@@ -706,6 +706,12 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	bool flaghappy=ec->isHappy(7);
 
+	int rangebit=0x7fffff00;
+
+	rangebit=rangebit%16;
+
+	mc->rangeBitwiseAnd(2147483646, 2147483647);
+
 	return 0;
 }
 

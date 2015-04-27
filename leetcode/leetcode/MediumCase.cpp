@@ -88,3 +88,64 @@ ListNode *MediumCase::deleteDuplicatesII(ListNode *head) {
     return head;
 }
 
+int MediumCase::rangeBitwiseAndSample(int m, int n) {
+        while(n>m){
+            n=n&(n-1);
+        }
+        return m&n;
+}
+
+int MediumCase::rangeBitwiseAnd(int m, int n){
+	int intret=0x7fffffff;
+
+	int step=0;
+	int bitwise=4;    //4 bit per step
+	int lowbound=-1;
+	int highbound=-1;
+
+	vector<int> flagvec;
+	
+
+	for(int i=1; i<8; i++){
+		int buf=0x7fffffff-0x10000000*(i-1);
+		for(int i=1; i<8; i++){
+				buf=(buf>>(i*bitwise))*(int)pow(2.0, bitwise*(i));
+				flagvec.push_back(buf);
+		}
+	}
+	for(int i=(flagvec.size()-1); i>=0; i--){
+		if(m<=flagvec.at(i)){
+			lowbound=i; 
+			break;
+		}
+	}
+	for(int i=0; i<flagvec.size(); i++){
+		if(n>=flagvec.at(i)){
+			highbound=i; 
+		}
+	}
+
+	
+
+	//m<=n
+	if(highbound==-1 || lowbound==-1){
+		//no high bound find, both right
+		//no low bound find, both left
+		step=0;
+	}else {
+		int tvalue=flagvec.at(lowbound);
+		int mod=tvalue%16;
+		while(mod==0){
+			step++;
+			tvalue=tvalue/16;
+			mod=tvalue%16;
+		}
+	}
+
+	for(int i=m>>(step*bitwise); i<=n>>(step*bitwise); i++){
+		intret&=i;
+		if(intret==0 || i==0x7fffffff) break;
+	}
+	return intret;
+}
+
