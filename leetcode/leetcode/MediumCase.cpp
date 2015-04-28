@@ -150,50 +150,33 @@ int MediumCase::rangeBitwiseAnd(int m, int n){
 }
 
 string MediumCase::fractionToDecimal(int numerator, int denominator){
-	int repeating=3; //consider 3 bit after "."
-	string strdivpart="";
-	string strmodpart="";
-	int divpart=0;
-	int modpart=0;
-	unordered_map<int, int> modmap;
-	vector<int> modvec;
+		if(numerator==0) return "0";  
+        string result;  
+        if(numerator<0 ^ denominator<0 ) result+='-';   
+        //abs INT_MIN  will cause overflow so use long long int
+        long long int n=numerator,d=denominator;  
+        n=abs(n);
+		d=abs(d);                
+          
+        result+=to_string(n/d);  //div part
+        long long int modvalue=n%d;     //mod part 
+        if(modvalue==0) return result;  
+        else result+='.';  
 
-	if(numerator==0 || denominator==0 ||numerator==INT_MIN || denominator==INT_MIN  ) return "0";
+        unordered_map<int,int> map;  
+        while(modvalue){  
 
-	if(numerator/denominator){
-		divpart=numerator/denominator;
-		numerator=numerator%denominator;
-	}
-
-	for(int i=0; i<repeating; i++){
-		int times=10;
-		while((numerator*times)/denominator<1){
-			times=times*10;
-		}
-		if(modmap.count(numerator*times/denominator)) modmap[numerator*times/denominator]++;
-		else {
-			modmap.insert(pair<int, int>(numerator*times/denominator, 1));
-			modvec.push_back(numerator*times/denominator);
-		}
-		if((numerator*times)%denominator==0) break;   //no mod value
-		numerator=(numerator*times)%denominator;
-	}
-	
-	stringstream stream;
-	for(int i=0; i<modvec.size(); i++){
-		if(modmap[modvec.at(i)]==1){
-			stream<<modvec.at(i);
-		} else{
-			stream<<"("<<modvec.at(i)<<")";
-		}
-	}
-
-	strmodpart=stream.str();
-
-	stringstream stream1;
-	stream1<<divpart;
-	strdivpart=stream1.str()+".";
-
-	return strdivpart+strmodpart;
+            if(map.find(modvalue)!=map.end()){  
+                result.insert(map[modvalue],1,'(');   
+                 result+=')';  
+                break;  
+            }  
+            map[modvalue]=result.size();    
+  
+            modvalue*=10;  
+            result+=to_string(modvalue/d);  
+            modvalue=modvalue%d;  
+        }  
+        return result;  
 }
 
