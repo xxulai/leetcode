@@ -728,3 +728,23 @@ int EasyCase::countPrimes(int n) {
         
         return count;
     }
+
+bool EasyCase::isIsomorphic(string s, string t) {
+        map<char, char> mp;
+        map<char, char> mp1;
+        
+        string::iterator tit=t.begin();
+        for(string::iterator sit=s.begin(); sit!=s.end(); sit++){
+            
+            if(mp.count(*sit)){
+                if(mp[*sit]!=*tit) return false;
+            }
+            
+            mp.insert(pair<char, char>(*sit, *tit));                
+            mp1.insert(pair<char, char>(*tit, *sit));                
+            
+            tit++;
+        }
+        
+        return mp.size()==mp1.size();
+}
