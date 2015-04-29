@@ -191,28 +191,31 @@ vector<vector<int> > MediumCase::threeSum(vector<int> &num){
         
         sort(num.begin(), num.end());
         
-        while(index2<num.size()){
-            for(int i=index2+1; i<num.size(); i++){
-                if((i+1)!=num.size()){
-                    //not last element
-                    if(num.at(i)==num.at(i+1)) {
-						index2++;
-						continue; //skip same element
+		while(index2!=num.size()-1){
+			while(index2<num.size()){
+				for(int i=index2+1; i<num.size(); i++){
+					/*if((i+1)!=num.size()){
+						//not last element
+						if(num.at(i)==num.at(i+1)) {
+							index2++;
+							continue; //skip same element
+						}
+					}*/
+					if((num.at(index1)+num.at(index2)+num.at(i))==0){
+						bufvec.push_back(num.at(index1));
+						bufvec.push_back(num.at(index2));
+						bufvec.push_back(num.at(i));
+						if(mp.find(bufvec)==mp.end()){
+							mp.insert(pair<vector<int>, int>(bufvec, 0));
+						}
+						bufvec.clear();
 					}
-                }
-                if((num.at(index1)+num.at(index2)+num.at(index2+1))==0){
-                    bufvec.push_back(num.at(index1));
-                    bufvec.push_back(num.at(index2));
-                    bufvec.push_back(num.at(index2+1));
-                    if(mp.find(bufvec)==mp.end()){
-						mp.insert(pair<vector<int>, int>(bufvec, 0));
-					}
-                    bufvec.clear();
-                }
-            }
-		    index1++;
-            index2++;
-        }
+				}
+				index2++;
+			}
+			index1++;
+			index2=index1+1;
+		}
 
 		for(map<vector<int>, int>::iterator it=mp.begin(); it!=mp.end(); it++){
 			retvec.push_back(it->first);
