@@ -716,6 +716,13 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	string strfrac=mc->fractionToDecimal(1, 99);
 
+	vector<int> threesum;
+	threesum.push_back(-1);
+	threesum.push_back(0);
+	threesum.push_back(1);
+	threesum.push_back(0);
+	mc->threeSum(threesum);
+
 	return 0;
 }
 

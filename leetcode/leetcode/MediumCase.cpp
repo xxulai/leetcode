@@ -180,3 +180,46 @@ string MediumCase::fractionToDecimal(int numerator, int denominator){
         return result;  
 }
 
+vector<vector<int> > MediumCase::threeSum(vector<int> &num){
+		int index1=0;
+        int index2=1;
+        vector<vector<int> > retvec;
+        vector<int> bufvec;
+		map<vector<int>, int> mp;
+        
+        if(num.size()<3) return retvec;
+        
+        sort(num.begin(), num.end());
+        
+        while(index2<num.size()){
+            for(int i=index2+1; i<num.size(); i++){
+                if((i+1)!=num.size()){
+                    //not last element
+                    if(num.at(i)==num.at(i+1)) {
+						index2++;
+						continue; //skip same element
+					}
+                }
+                if((num.at(index1)+num.at(index2)+num.at(index2+1))==0){
+                    bufvec.push_back(num.at(index1));
+                    bufvec.push_back(num.at(index2));
+                    bufvec.push_back(num.at(index2+1));
+                    if(mp.find(bufvec)==mp.end()){
+						mp.insert(pair<vector<int>, int>(bufvec, 0));
+					}
+                    bufvec.clear();
+                }
+            }
+		    index1++;
+            index2++;
+        }
+
+		for(map<vector<int>, int>::iterator it=mp.begin(); it!=mp.end(); it++){
+			retvec.push_back(it->first);
+		}
+
+		
+        
+        return retvec;
+}
+
