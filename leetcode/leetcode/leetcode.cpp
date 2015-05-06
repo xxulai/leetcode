@@ -723,6 +723,12 @@ int _tmain(int argc, _TCHAR* argv[])
 		threesum.push_back(arr[i]);
 	mc->threeSum(threesum);
 
+	ListNode *reversehead=new ListNode(1);
+	reversehead->next=new ListNode(2);
+	reversehead->next->next=new ListNode(3);
+
+	reversehead=ec->reverseList(reversehead);
+
 	return 0;
 }
 

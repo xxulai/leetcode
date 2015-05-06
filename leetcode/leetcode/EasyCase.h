@@ -48,4 +48,5 @@ public:
 	ListNode* removeElements(ListNode* head, int val);//Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6   Return: 1 --> 2 --> 3 --> 4 --> 5 
 	int countPrimes(int n); //Count the number of prime numbers less than a non-negative number, n
 	bool isIsomorphic(string s, string t); //Two strings are isomorphic if the characters in s can be replaced to get t.Given "egg", "add", return true. Given "foo", "bar", return false.
+	ListNode* EasyCase::reverseList(ListNode* head); //reverse single linked list
 };

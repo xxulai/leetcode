@@ -748,3 +748,30 @@ bool EasyCase::isIsomorphic(string s, string t) {
         
         return mp.size()==mp1.size();
 }
+
+ListNode* EasyCase::reverseList(ListNode* head) {
+        vector<ListNode *> nodevec;
+        ListNode *point=head;
+        
+        if(head==NULL || head->next==NULL) return head;
+        
+        while(point!=NULL){
+            nodevec.push_back(point);
+            point=point->next;
+        }
+        
+        head=nodevec.back();
+        nodevec.pop_back();
+        point=head;
+        
+		int length=nodevec.size();
+		for(int i=0; i<length; i++){
+			point->next=nodevec.back();
+			nodevec.pop_back();
+			point=point->next;
+		}
+
+		point->next=NULL;
+        
+        return head;
+}
