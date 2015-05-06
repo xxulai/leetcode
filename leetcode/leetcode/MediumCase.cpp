@@ -226,3 +226,50 @@ vector<vector<int> > MediumCase::threeSum(vector<int> &num){
         return retvec;
 }
 
+
+ void MediumCase::reorderList(ListNode* head) {
+        if(head==NULL || head->next==NULL) return;
+        
+		ListNode *reversehead=NULL;
+		ListNode *reversecur=NULL;
+        ListNode *cur=head;
+        ListNode *p=head;
+		ListNode *half=head->next;
+        vector<ListNode*> vec;
+        vector<ListNode*> second;
+        
+        int length=1;
+
+		//revert link list
+        while(p!=NULL){
+            vec.push_back(p);
+            p=p->next;
+        }
+
+		length=vec.size();
+		for(int i=0; i<length; i++){
+			if(reversecur==NULL){
+				reversehead=vec.back();
+				reversecur=reversehead;
+			} else{
+				reversecur->next=vec.back();
+				reversecur=reversecur->next;
+			}
+			vec.pop_back();
+		}
+		reversecur->next=NULL;
+		reversecur=reversehead;
+		cur=head;
+        
+        for(int i=0; i<length/2; i++){
+            reversecur->next=cur->next;
+			cur->next=reversecur;
+			cur=cur->next;
+			reversecur=reversecur->next;
+        }
+
+		if(length%2!=0){
+			cur->next=reversecur->next;
+			cur->next->next=NULL;
+		}
+}

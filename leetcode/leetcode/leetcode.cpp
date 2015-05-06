@@ -727,7 +727,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	reversehead->next=new ListNode(2);
 	reversehead->next->next=new ListNode(3);
 
-	reversehead=ec->reverseList(reversehead);
+	mc->reorderList(reversehead);
 
 	return 0;
 }

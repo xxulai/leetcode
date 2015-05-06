@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 class MediumCase{
 public:
@@ -13,6 +13,7 @@ public:
 	  int rangeBitwiseAndSample(int m, int n); //sample program for rangeBitwiseAnd
 	  string fractionToDecimal(int numerator, int denominator); //Given two integers representing the numerator and denominator of a fraction, return the fraction in string format. Given numerator = 2, denominator = 3, return "0.(6)".
 	  vector<vector<int> > threeSum(vector<int> &num); //Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+	  void reorderList(ListNode* head); //Given a singly linked list L: L0→L1→…→Ln-1→Ln, reorder it to: L0→Ln→L1→Ln-1→L2→Ln-2→… 
 private: 
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };
