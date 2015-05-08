@@ -260,16 +260,19 @@ vector<vector<int> > MediumCase::threeSum(vector<int> &num){
 		reversecur->next=NULL;
 		reversecur=reversehead;
 		cur=head;
+		p=cur->next;
         
         for(int i=0; i<length/2; i++){
-            reversecur->next=cur->next;
-			cur->next=reversecur;
-			cur=cur->next;
+            cur->next=reversecur;
+			reversecur->next=p;
+			cur=p;
+			p=cur->next;
 			reversecur=reversecur->next;
         }
 
 		if(length%2!=0){
-			cur->next=reversecur->next;
-			cur->next->next=NULL;
+			cur->next=NULL;
+		} else{
+			cur=NULL;
 		}
 }

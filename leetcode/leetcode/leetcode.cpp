@@ -727,7 +727,33 @@ int _tmain(int argc, _TCHAR* argv[])
 	reversehead->next=new ListNode(2);
 	reversehead->next->next=new ListNode(3);
 
-	mc->reorderList(reversehead);
+	//mc->reorderList(reversehead);
+
+	string str="WÃ¼nscher";   //"Wünscher"
+	string outstr="";
+	int ch=0;
+	for(string::iterator a=str.begin(); a!=str.end(); a++){
+		ch=*a;
+		if (!(*a&128))
+			//Byte represents an ASCII character. 
+			outstr+=*a;
+		else if ((*a&192)==128)
+			//Byte is the middle of an encoded character. Ignore.
+			continue;
+		else if ((*a&224)==192)
+			//Byte represents the start of an encoded character in the range
+			//U+0080 to U+07FF
+			outstr+=((*a&31)<<6)|a[1]&63;
+		else if ((*a&240)==224)
+			//Byte represents the start of an encoded character in the range
+			//U+07FF to U+FFFF
+			outstr+=((*a&15)<<12)|((a[1]&63)<<6)|a[2]&63;
+		else if ((*a&248)==240){
+			//Byte represents the start of an encoded character beyond the
+			//U+FFFF limit of 16-bit integers
+			outstr='?';
+		}
+	}
 
 	return 0;
 }
