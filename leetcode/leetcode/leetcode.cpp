@@ -755,6 +755,24 @@ int _tmain(int argc, _TCHAR* argv[])
 		}
 	}
 
+	map<string, map<string, string> > language_mp;
+	map<string, string> bufmp;
+
+	vector<string> ss;
+
+	ss.push_back("DE");
+	ss.push_back("aa");
+	ss.push_back("ae");
+
+	bufmp.insert(pair<string, string>("uu", "ue"));
+	language_mp.insert(pair<string, map<string, string> >("DE", bufmp));
+	
+	language_mp[ss.at(0)].insert(pair<string, string>(ss.at(1), ss.at(2)));
+
+	const char* sstr="Vo-LC™";
+	unsigned offSet=9;
+	sstr=sstr+offSet;
+
 	return 0;
 }
 

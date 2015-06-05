@@ -775,3 +775,16 @@ ListNode* EasyCase::reverseList(ListNode* head) {
         
         return head;
 }
+
+bool containsDuplicate(vector<int>& nums) {
+        if(nums.size()<=1) return false;
+		unordered_map<int, int> mp;
+		mp.insert(pair<int, int>(nums.at(0), 0));
+        
+        for(int i=1; i<nums.size(); i++){
+			if(mp.count(nums.at(i))) return true;
+			else mp.insert(pair<int, int>(nums.at(i), 0));
+        }
+        
+        return false;
+}
