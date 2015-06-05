@@ -773,6 +773,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	unsigned offSet=9;
 	sstr=sstr+offSet;
 
+	vector<int> ndvec;
+	ndvec.push_back(1);
+	ndvec.push_back(2);
+	ndvec.push_back(3);
+	ndvec.push_back(1);
+	bool ndbvalue=ec->containsNearbyDuplicate(ndvec, 1);
+
 	return 0;
 }
 
