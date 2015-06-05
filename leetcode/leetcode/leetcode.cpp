@@ -773,12 +773,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	unsigned offSet=9;
 	sstr=sstr+offSet;
 
-	vector<int> ndvec;
-	ndvec.push_back(1);
-	ndvec.push_back(2);
-	ndvec.push_back(3);
-	ndvec.push_back(1);
-	bool ndbvalue=ec->containsNearbyDuplicate(ndvec, 1);
+	vector<int> *ndvec=new vector<int>;
+	
+	for(int i=0; i<2147483647; i++)
+		ndvec->push_back(i);
+
+	bool ndbvalue=false;
+	//ndbvalue=ec->containsNearbyDuplicate(ndvec, 1);
+	ndbvalue=mc->containsNearbyAlmostDuplicate(*ndvec, 1, 2147483647);//[7,1,3], 2, 3
+
 
 	return 0;
 }

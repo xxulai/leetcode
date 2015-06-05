@@ -276,3 +276,26 @@ vector<vector<int> > MediumCase::threeSum(vector<int> &num){
 			cur=NULL;
 		}
 }
+
+
+bool MediumCase::containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t){
+	unordered_map<int, int> mp;   //value, index
+        
+    for(int i=0; i<nums.size(); i++){
+			for(int j=abs(nums[i]-t); j<nums[i]; j++){
+				if(mp.find(nums[i])!=mp.end() && abs(nums[i]-nums[mp[nums[i]]])<=t && abs(mp[nums[i]]-i)<=k)
+					return true;
+				else
+					mp[j]=i;
+			}
+			for(int j=abs(nums[i]+t); j>nums[i]; j--){
+				if(mp.find(nums[i])!=mp.end() && abs(nums[i]-nums[mp[nums[i]]])<=t && abs(mp[nums[i]]-i)<=k)
+					return true;
+				else
+					mp[j]=i;
+			}
+	}
+        
+    return false;
+
+}
