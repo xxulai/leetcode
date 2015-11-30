@@ -51,4 +51,5 @@ public:
 	ListNode* EasyCase::reverseList(ListNode* head); //reverse single linked list
 	bool containsDuplicate(vector<int>& nums); //Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct. 
 	bool containsNearbyDuplicate(vector<int>& nums, int k); //Given an array of integers and an integer k, find out whether there there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
+	int addDigits(int num); //Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
 };

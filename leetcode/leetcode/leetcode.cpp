@@ -775,13 +775,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	vector<int> *ndvec=new vector<int>;
 	
-	for(int i=0; i<2147483647; i++)
+	/*for(int i=0; i<2147483647; i++)
 		ndvec->push_back(i);
 
 	bool ndbvalue=false;
 	//ndbvalue=ec->containsNearbyDuplicate(ndvec, 1);
 	ndbvalue=mc->containsNearbyAlmostDuplicate(*ndvec, 1, 2147483647);//[7,1,3], 2, 3
-
+	*/
+	int addDigitsval=ec->addDigits(385);
 
 	return 0;
 }

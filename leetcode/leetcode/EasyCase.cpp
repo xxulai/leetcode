@@ -803,3 +803,30 @@ bool EasyCase::containsNearbyDuplicate(vector<int>& nums, int k) {
 
     return false;    
 }
+
+int EasyCase::addDigits(int num){
+	int ret=0;
+	int t=num;
+	vector<int> tvec;
+
+	if(num<=9) return num;
+
+	if(num/10!=0)
+	{
+		while(t/10!=0)
+		{
+			tvec.push_back(t%10);
+			t=t/10;
+		}
+		tvec.push_back(t);
+	}
+
+	for(vector<int>::iterator it=tvec.begin(); it<tvec.end(); it++)
+	{
+		ret+=*it;
+	}
+
+	if(ret/10!=0) ret=addDigits(ret);
+
+	return ret;
+}
