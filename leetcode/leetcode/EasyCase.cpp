@@ -880,4 +880,16 @@ void EasyCase::moveZeroes(vector<int>& nums) {
 				i=i+1;
 			}
         }
-    }
+}
+
+bool EasyCase::isAnagram(string s, string t)
+{
+	if(s.length()!=t.length()) return false;
+
+	string::reverse_iterator tit=t.rbegin();
+	for(string::iterator it=s.begin(); it<s.end(); it++, tit++)
+	{
+		if(*it!=*tit) return false;
+	}
+	return true;
+}
