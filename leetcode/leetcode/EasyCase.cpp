@@ -830,3 +830,37 @@ int EasyCase::addDigits(int num){
 
 	return ret;
 }
+
+bool EasyCase::isUgly(int num){
+	if(num==1) return true;
+
+	int rest=num;
+
+	map<int, bool> mp;
+	mp.insert(pair<int, bool>(2, true));
+	mp.insert(pair<int, bool>(3, true));
+	mp.insert(pair<int, bool>(5, true));
+	mp.insert(pair<int, bool>(6, true));
+	mp.insert(pair<int, bool>(10, true));
+	mp.insert(pair<int, bool>(15, true));
+
+	vector<int> pvec;
+	pvec.push_back(2);
+	pvec.push_back(3);
+	pvec.push_back(5);
+	pvec.push_back(6);
+	pvec.push_back(10);
+	pvec.push_back(15);
+
+	while(rest!=1)
+	{
+	//	for(vector<)
+	}
+
+}
+
+void EasyCase::deleteNode(ListNode* node)
+{
+	 node->val=node->next->val;
+     node->next=node->next->next;
+}
