@@ -783,6 +783,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	ndbvalue=mc->containsNearbyAlmostDuplicate(*ndvec, 1, 2147483647);//[7,1,3], 2, 3
 	*/
 	int addDigitsval=ec->addDigits(385);
+	/*int zeroarr[]={0,1,0};
+	vector<int> zerovec(zeroarr.begin(), zeroarr.end());*/
+	vector<int> zerovec;
+	zerovec.push_back(0);
+	zerovec.push_back(0);
+	zerovec.push_back(1);
+
+	ec->moveZeroes(zerovec);
 
 	return 0;
 }

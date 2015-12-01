@@ -864,3 +864,20 @@ void EasyCase::deleteNode(ListNode* node)
 	 node->val=node->next->val;
      node->next=node->next->next;
 }
+
+void EasyCase::moveZeroes(vector<int>& nums) {
+        int length=nums.size();
+        for(int i=0; i<length; ){
+            if(nums.at(i)==0)
+            {
+                nums.erase(nums.begin()+i);
+                nums.push_back(0);
+                i=0; //reset from the start
+                length=length-1;  //shorten search length
+            }
+			else
+			{
+				i=i+1;
+			}
+        }
+    }
