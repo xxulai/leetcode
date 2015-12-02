@@ -786,13 +786,16 @@ int _tmain(int argc, _TCHAR* argv[])
 	/*int zeroarr[]={0,1,0};
 	vector<int> zerovec(zeroarr.begin(), zeroarr.end());*/
 	vector<int> zerovec;
-	zerovec.push_back(0);
-	zerovec.push_back(0);
 	zerovec.push_back(1);
+	zerovec.push_back(1);
+	zerovec.push_back(2);
+	zerovec.push_back(2);
 
 	ec->moveZeroes(zerovec);
 
 	ec->isAnagram("ab", "ba");
+
+	ec->NremoveDuplicates(zerovec);
 
 	return 0;
 }

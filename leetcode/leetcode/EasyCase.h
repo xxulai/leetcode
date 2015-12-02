@@ -56,4 +56,5 @@ public:
 	void deleteNode(ListNode* node); //Supposed the linked list is 1 -> 2 -> 3 -> 4 and you are given the third node with value 3, the linked list should become 1 -> 2 -> 4
 	void moveZeroes(vector<int>& nums); //For example, given nums = [0, 1, 0, 3, 12], after calling your function, nums should be [1, 3, 12, 0, 0].
 	bool isAnagram(string s, string t); //Given two strings s and t, write a function to determine if t is an anagram of s.  s = "anagram", t = "nagaram", return true.
+	int NremoveDuplicates(vector<int>& nums); //Given input array nums = [1,1,2], Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively. It doesn't matter what you leave beyond the new length.
 };
