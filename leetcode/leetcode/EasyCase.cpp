@@ -954,3 +954,22 @@ int EasyCase::titleToNumber(string s) {
 
 		return ret;
     }
+
+int EasyCase::majorityElement(vector<int> &num) {
+        
+		unordered_map<int, int> mp;
+		int ret=num.at(0);
+
+		for(vector<int>::iterator it=num.begin(); it!=num.end(); it++){
+			if(mp.count(*it)){
+				mp[*it]+=1;
+				if(mp[*it]>num.size()/2){
+					ret=*it;
+					break;
+				}
+			} else{
+				mp.insert(std::pair<int, int>(*it, 1));
+			}
+		}
+		return ret; 
+    }
