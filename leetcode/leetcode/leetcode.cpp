@@ -455,27 +455,6 @@ vector<int> twoSum(vector<int> &numbers, int target) {
 		return ret; 
     }
 
-	int titleToNumber(string s) {
-
-		int length=s.length();
-		char tchar='A';
-		int ret=0;
-		
-
-		std::unordered_map<char, int> mp;
-
-		for(int i=0; i<26; i++){
-			mp.insert(std::pair<char, int>(tchar+i, i+1));
-		}
-
-        for(string::iterator sit=s.begin(); sit!=s.end(); sit++){
-			ret+=mp[*sit]*pow(26.0, length-1);
-			length--;
-		}
-
-		return ret;
-    }
-
 	//split 13.25.2.6  into vector 13 25 2 6
 	vector<string> refineString(string& str){
 		vector<string> ret;
