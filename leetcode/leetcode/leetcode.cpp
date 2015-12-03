@@ -793,7 +793,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	ec->moveZeroes(zerovec);
 
-	ec->isAnagram("ab", "ba");
+	bool anagflag=ec->isAnagram("ab", "ba");
 
 	ec->NremoveDuplicates(zerovec);
 

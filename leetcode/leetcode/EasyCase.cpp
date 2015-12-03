@@ -884,14 +884,10 @@ void EasyCase::moveZeroes(vector<int>& nums) {
 
 bool EasyCase::isAnagram(string s, string t)
 {
-	if(s.length()!=t.length()) return false;
-
-	string::reverse_iterator tit=t.rbegin();
-	for(string::iterator it=s.begin(); it<s.end(); it++, tit++)
-	{
-		if(*it!=*tit) return false;
-	}
-	return true;
+	//Anagram definition is important!!!
+	sort(s.begin(), s.end());
+    sort(t.begin(), t.end());
+    return s == t;
 }
 
 int EasyCase::NremoveDuplicates(vector<int>& nums)
