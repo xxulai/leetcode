@@ -60,4 +60,5 @@ public:
 	bool isPowerOfTwo(int n); //Given an integer, write a function to determine if it is a power of two.
 	int titleToNumber(string s); //Given a column title as appear in an Excel sheet, return its corresponding column number. A -> 1  AB -> 28
 	int majorityElement(vector<int> &num); //Given an array of size n, find the majority element. The majority element is the element that appears more than [n/2] times.
+	int hammingWeight(uint32_t n); //For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
 };

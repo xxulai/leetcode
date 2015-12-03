@@ -524,6 +524,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	string out, out1;
 	int input=24568;
 	out = convertToTitle(input);
+
+	EasyCase *ec = new EasyCase();
 	
 	input=729;
 	out = convertToTitle(input);
@@ -570,9 +572,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	for(int i=0; i<sizeof(majorityElementarray)/sizeof(int); i++){
 		majorityElementVector.push_back(majorityElementarray[i]);
 	}
-	int t=majorityElement(majorityElementVector);
+	int t=ec->majorityElement(majorityElementVector);
 
-	int inttitleToNumber = titleToNumber("BA");
+	int inttitleToNumber = ec->titleToNumber("BA");
 
 	int test=compareVersion("1", "1.2");
 
@@ -589,7 +591,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	ms->getMin();
 	ms->pop();
 
-	EasyCase *ec = new EasyCase();
 	ec->isPalindrome("1a2");
 
 	vector<vector<int>> generateret=ec->generate(2);
