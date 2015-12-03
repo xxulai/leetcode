@@ -5,6 +5,7 @@
 #include "MinStack.h"
 #include "EasyCase.h"
 #include "MediumCase.h"
+#include "HardCase.h"
 
 
 /*
@@ -526,6 +527,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	out = convertToTitle(input);
 
 	EasyCase *ec = new EasyCase();
+	HardCase *hc = new HardCase();
 	
 	input=729;
 	out = convertToTitle(input);
@@ -768,6 +770,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	p11->next=p21;
 
 	ListNode *revershead=ec->reverseList2(head11);
+
+	vector<int> fvect;
+	//fvect.push_back(3);
+	//fvect.push_back(4);
+	fvect.push_back(1);
+	fvect.push_back(1);
+	
+	int firstmissingp=hc->firstMissingPositive(fvect);
 
 	return 0;
 }
