@@ -48,7 +48,6 @@ public:
 	ListNode* removeElements(ListNode* head, int val);//Given: 1 --> 2 --> 6 --> 3 --> 4 --> 5 --> 6, val = 6   Return: 1 --> 2 --> 3 --> 4 --> 5 
 	int countPrimes(int n); //Count the number of prime numbers less than a non-negative number, n
 	bool isIsomorphic(string s, string t); //Two strings are isomorphic if the characters in s can be replaced to get t.Given "egg", "add", return true. Given "foo", "bar", return false.
-	ListNode* EasyCase::reverseList(ListNode* head); //reverse single linked list
 	bool containsDuplicate(vector<int>& nums); //Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct. 
 	bool containsNearbyDuplicate(vector<int>& nums, int k); //Given an array of integers and an integer k, find out whether there there are two distinct indices i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
 	int addDigits(int num); //Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
@@ -61,4 +60,6 @@ public:
 	int titleToNumber(string s); //Given a column title as appear in an Excel sheet, return its corresponding column number. A -> 1  AB -> 28
 	int majorityElement(vector<int> &num); //Given an array of size n, find the majority element. The majority element is the element that appears more than [n/2] times.
 	int hammingWeight(uint32_t n); //For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
+	ListNode* reverseList(ListNode* head); ////reverse single linked list
+	ListNode* reverseList2(ListNode* head);
 };

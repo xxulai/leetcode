@@ -760,6 +760,15 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	ec->NremoveDuplicates(zerovec);
 
+	ListNode *head11=new ListNode(1);
+	ListNode *p11=new ListNode(2);
+	ListNode *p21=new ListNode(3);
+
+	head11->next=p11;
+	p11->next=p21;
+
+	ListNode *revershead=ec->reverseList2(head11);
+
 	return 0;
 }
 

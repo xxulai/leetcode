@@ -776,6 +776,28 @@ ListNode* EasyCase::reverseList(ListNode* head) {
         return head;
 }
 
+ListNode* EasyCase::reverseList2(ListNode* head) {
+
+	if(head==NULL || head->next==NULL) return head;
+
+	ListNode *pre=head;
+	ListNode *cur=head->next;
+	ListNode *buf=cur;
+
+	while(cur!=NULL)
+	{
+		if(pre==head)
+			pre->next=NULL;
+		buf=cur->next;
+		cur->next=pre;
+
+		pre=cur;
+		cur=buf;
+	}
+
+	return pre;
+}
+
 bool containsDuplicate(vector<int>& nums) {
         if(nums.size()<=1) return false;
 		unordered_map<int, int> mp;
@@ -973,3 +995,18 @@ int EasyCase::majorityElement(vector<int> &num) {
 		}
 		return ret; 
     }
+
+int EasyCase::hammingWeight(uint32_t n) {
+        int cnt=0;
+        
+        if(n%2!=0) cnt=1;
+        
+        while(n!=0)
+        {
+            n>>=1;
+            if(n%2!=0) cnt++;
+        }
+        
+        return cnt;
+    }
+
