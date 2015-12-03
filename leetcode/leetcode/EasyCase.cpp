@@ -899,44 +899,24 @@ int EasyCase::NremoveDuplicates(vector<int>& nums)
 	if(nums.size()<2) return nums.size();
         
         int buf1=nums.at(0);
-        int buf2=nums.at(1);
-        int length=nums.size();
         
-        for(int i=0; i<length; i++)
+        for(int i=0; i<nums.size(); i++)
         {
-            if(buf1==buf2)
-            {
-				int cnt=0;
-                for(int j=i+1; j<length; j++)
-                {
-                    if(nums.at(j)==buf1)
-					{
-						cnt++;
-					}		
-					else
-					{
-						if(cnt!=0)
-						{
-							nums.erase(nums.begin()+i, nums.begin()+i+cnt);
-							length-=cnt;
-							if((i+1)<length) 
-							{
-								buf2=nums.at(i+1);
-							}
-						}
-					}
-                }
-            }
-            else
-            {
-				if((i+2)<length) 
-				{
-					buf1=nums.at(i+1);
-					buf2=nums.at(i+2);
-				}
-				else
+            int cnt=0;
+			for(int j=i+1; j<nums.size(); j++)
+			{
+				if(nums.at(j)==buf1)
+					cnt++;
+				else 
 					break;
-            }
+			}
+			if(cnt!=0){
+				nums.erase(nums.begin()+i, nums.begin()+i+cnt);
+			}
+			if((i+1)<nums.size())
+			{
+				buf1=nums.at(i+1);
+			}
         }
         
         return nums.size();
