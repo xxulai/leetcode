@@ -826,6 +826,11 @@ bool EasyCase::containsNearbyDuplicate(vector<int>& nums, int k) {
     return false;    
 }
 
+/*
+* for O(1) runtime, watch the repeat status
+*out=(in-1)%9+1
+*
+*/
 int EasyCase::addDigits(int num){
 	int ret=0;
 	int t=num;
