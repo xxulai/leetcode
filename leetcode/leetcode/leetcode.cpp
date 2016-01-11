@@ -777,7 +777,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	fvect.push_back(1);
 	fvect.push_back(1);
 	
-	int firstmissingp=hc->firstMissingPositive(fvect);
+	//int firstmissingp=hc->firstMissingPositive(fvect);
+
+	ListNode *pp1=new ListNode(5);
+	ListNode *pp2=new ListNode(1);
+	pp2->next=new ListNode(2);
+	pp2->next->next=new ListNode(4);
+	pp1=ec->mergeTwoLists(pp1, pp2);
 
 	return 0;
 }

@@ -63,4 +63,5 @@ public:
 	ListNode* reverseList(ListNode* head); ////reverse single linked list
 	ListNode* reverseList2(ListNode* head);
 	bool isPowerOfThree(int n); //Given an integer, write a function to determine if it is a power of three. 
+	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2); //Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 };
