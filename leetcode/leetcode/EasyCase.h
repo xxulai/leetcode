@@ -62,4 +62,5 @@ public:
 	int hammingWeight(uint32_t n); //For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
 	ListNode* reverseList(ListNode* head); ////reverse single linked list
 	ListNode* reverseList2(ListNode* head);
+	bool isPowerOfThree(int n); //Given an integer, write a function to determine if it is a power of three. 
 };
