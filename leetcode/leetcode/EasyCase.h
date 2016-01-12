@@ -64,4 +64,5 @@ public:
 	ListNode* reverseList2(ListNode* head);
 	bool isPowerOfThree(int n); //Given an integer, write a function to determine if it is a power of three. 
 	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2); //Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+	int firstBadVersion(int n); //Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad. 
 };

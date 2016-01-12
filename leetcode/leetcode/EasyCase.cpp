@@ -1026,4 +1026,34 @@ ListNode* EasyCase::mergeTwoLists(ListNode* l1, ListNode* l2)
     return dummy->next;
 }
 
+bool isBadVersion(int version)
+{
+	if(version>10) return true;
+	else return false;
+}
+int EasyCase::firstBadVersion(int n)
+{
+	if(n<=0) return -1;
+	int start=1;
+	int end=n; 
+	int mid=(start+end)/2;
+
+	while((start+1)<end)
+	{	
+		mid=start+(end-start)/2;   //mid=(start+end)/2 has problem when end is MAX INT, or when start+end is over MAX INT!!!!!!
+		if(isBadVersion(mid))
+		{
+			end = mid;
+		}
+		else
+		{
+			start=mid;
+		}
+	}
+
+	if(isBadVersion(start)) return start;
+	if(isBadVersion(end)) return end;
+	return -1;
+}
+
 
