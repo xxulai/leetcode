@@ -931,20 +931,12 @@ int EasyCase::NremoveDuplicates(vector<int>& nums)
 }
 
 bool EasyCase::isPowerOfTwo(int n) {
-        
-        if(n==0) return false;
-        if(n==1) return true;
-
-        while(n/2!=1 && n%2==0)
+        while(n/2>=1 && n%2==0)
         {
             n=n/2;
         }
-        
-        if (n==2)
-            return true;
-        else
-            return false;
-    }
+        return n==1;
+}
 
 int EasyCase::titleToNumber(string s) {
 
@@ -1033,4 +1025,5 @@ ListNode* EasyCase::mergeTwoLists(ListNode* l1, ListNode* l2)
         
     return dummy->next;
 }
+
 
