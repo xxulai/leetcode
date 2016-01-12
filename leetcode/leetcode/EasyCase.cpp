@@ -1011,48 +1011,26 @@ bool EasyCase::isPowerOfThree(int n)
 
 ListNode* EasyCase::mergeTwoLists(ListNode* l1, ListNode* l2)
 {
-	if(l1==NULL) return l2;
-	    if(l2==NULL) return l1;
-
-        ListNode* ptr1=l1;
-		ListNode* pre_ptr1=l1;
-		ListNode* ptr2=l2;
-
-		ListNode* l1_tail=l1;
-
-		while(l1_tail->next!=NULL) l1_tail=l1_tail->next;
-
-
-	    while(ptr2!=NULL)
-	    {
-    	    //find first node who is bigger than current ptr_l2
-			while(ptr1!=NULL && ptr1->val<ptr2->val) {
-				ptr1=ptr1->next;
-				pre_ptr1=pre_ptr1->next;
-			}
-	        if(ptr1==NULL && pre_ptr1->val<ptr2->val) 
-			{
-				//append the l2 to l1
-				l1_tail->next=ptr2;
-			}
-			else
-			{
-				//insert the node before the ptr1 
-				//remove the node from l2
-				if(ptr1==NULL)
-				{
-					//insert the node before the tail
-					ptr1
-
-				}
-				ListNode *tnode=new ListNode(ptr2->val);
-				pre_ptr1->next=tnode;
-				tnode->next=ptr1;
-				pre_ptr1=pre_ptr1->next;
-
-				ptr2=ptr2->next;
-			}
+	ListNode *dummy = new ListNode(0);
+    ListNode *lastNode = dummy;
+        
+    while (l1 != NULL && l2 != NULL) {
+        if (l1->val < l2->val) {
+            lastNode->next = l1;
+            l1 = l1->next;
+        } else {
+            lastNode->next = l2;
+            l2 = l2->next;
         }
-	    return l1;
+        lastNode = lastNode->next;
+    }
+        
+    if (l1 != NULL) {
+        lastNode->next = l1;
+    } else {
+        lastNode->next = l2;
+    }
+        
+    return dummy->next;
 }
 
