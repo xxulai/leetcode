@@ -1104,4 +1104,27 @@ vector<string> EasyCase::summaryRanges(vector<int>& nums)
         return ret;
 }
 
+ vector<int> sums;
+    
+/*class  NumArray(vector<int> &nums) {
+		//buffer the sum result when initialization to improve performance
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(i==0)
+                sums.push_back(nums.at(i));
+            else
+                sums.push_back(sums.at(i-1)+nums.at(i));
+        }
+    }
+*/
+int EasyCase::sumRange(int i, int j) 
+{
+        
+        if(i==0)
+            return sums.at(j);
+        else
+            return sums.at(j)-sums.at(i-1); //must be i-1, sumRange(2, 5) means sum from index 2 to 5!
+}
+
+
 

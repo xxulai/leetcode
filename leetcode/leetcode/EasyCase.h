@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 
 class EasyCase{
 
@@ -59,11 +59,12 @@ public:
 	bool isPowerOfTwo(int n); //Given an integer, write a function to determine if it is a power of two.
 	int titleToNumber(string s); //Given a column title as appear in an Excel sheet, return its corresponding column number. A -> 1  AB -> 28
 	int majorityElement(vector<int> &num); //Given an array of size n, find the majority element. The majority element is the element that appears more than [n/2] times.
-	int hammingWeight(uint32_t n); //For example, the 32-bit integer �11' has binary representation 00000000000000000000000000001011, so the function should return 3.
+	int hammingWeight(uint32_t n); //For example, the 32-bit integer ’11' has binary representation 00000000000000000000000000001011, so the function should return 3.
 	ListNode* reverseList(ListNode* head); ////reverse single linked list
 	ListNode* reverseList2(ListNode* head);
 	bool isPowerOfThree(int n); //Given an integer, write a function to determine if it is a power of three. 
 	ListNode* mergeTwoLists(ListNode* l1, ListNode* l2); //Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 	int firstBadVersion(int n); //Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad. 
 	vector<string> summaryRanges(vector<int>& nums); //Given a sorted integer array without duplicates, return the summary of its ranges. 
+	int sumRange(int i, int j); //Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. DP problem!!
 };
