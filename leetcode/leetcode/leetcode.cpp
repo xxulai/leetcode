@@ -785,6 +785,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	pp2->next->next=new ListNode(4);
 	pp1=ec->mergeTwoLists(pp1, pp2);
 
+	vector<int> sr;
+	sr.push_back(0);
+	sr.push_back(1);
+	
+
+	vector<string> strsr=ec->summaryRanges(sr);
+
 	return 0;
 }
 

@@ -1056,4 +1056,52 @@ int EasyCase::firstBadVersion(int n)
 	return -1;
 }
 
+vector<string> EasyCase::summaryRanges(vector<int>& nums) 
+{
+        vector<string> ret;
+        
+        if(nums.size()==0) return ret;
+        
+        char start[50];
+		char end[50];
+        sprintf(start, "%d", nums.at(0));
+        sprintf(end, "%d", nums.at(0));
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+			if((i+1)==nums.size())
+			{
+				//last element
+				if(string(start)==string(end))
+                   ret.push_back(start);
+				else
+				   ret.push_back(string(start)+"->"+string(end));
+				break;
+			}
+
+            if((nums.at(i)+1)==nums.at(i+1))
+            {
+                sprintf(end, "%d", nums.at(i+1));
+                continue;
+            }
+            else if(nums.at(i)==nums.at(i+1))
+			{
+				continue;
+			}
+			else
+            {
+                if(string(start)==string(end))
+                   ret.push_back(start);
+                else
+                   ret.push_back(string(start)+"->"+string(end));
+                sprintf(start, "%d", nums.at(i+1));
+                sprintf(end, "%d", nums.at(i+1));
+            }
+        }
+
+
+
+        return ret;
+}
+
 
