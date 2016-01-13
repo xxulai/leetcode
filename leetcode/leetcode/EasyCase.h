@@ -4,6 +4,7 @@ class EasyCase{
 
 public:
 	bool isPalindrome(string s);
+	bool EasyCase::isPalindrome_lessspace(ListNode* head); //Given a singly linked list, determine if it is a palindrome. Could you do it in O(n) time and O(1) space?
 	vector<vector<int> > generate(int numRows);  //Pascal's Triangle
 	vector<int> getRow(int rowIndex); //Pascal's Triangle II
 	bool hasPathSum(TreeNode *root, int sum); //Path Sum

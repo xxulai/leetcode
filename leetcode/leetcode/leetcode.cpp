@@ -789,8 +789,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	sr.push_back(0);
 	sr.push_back(1);
 	
-
 	vector<string> strsr=ec->summaryRanges(sr);
+
+	ListNode *pdp1=new ListNode(1);
+	ListNode *pdp2=new ListNode(0);
+	ListNode *pdp3=new ListNode(1);
+	pdp1->next=pdp2;
+	pdp2->next=pdp3;
+	bool pbvalue=ec->isPalindrome_lessspace(pdp1);
 
 	return 0;
 }

@@ -1126,5 +1126,36 @@ int EasyCase::sumRange(int i, int j)
             return sums.at(j)-sums.at(i-1); //must be i-1, sumRange(2, 5) means sum from index 2 to 5!
 }
 
+bool EasyCase::isPalindrome_lessspace(ListNode* head) {
+		if(head==NULL || head->next==NULL) return true;
+        stack<int> s;
+        ListNode* half=head;
+        int count=0;
+        while(half!=NULL)
+        {
+            count++;
+            half=half->next;
+        }
+        //move half point to mid
+        half=head;
+        for(int i=0; i<count/2; i++)
+        {
+			s.push(half->val);
+            half=half->next;
+        }
+        //start to move the point, if count is odd, move to the mid+1 elements
+		if(count%2!=0) half=half->next;
+        while(half!=NULL)
+        {
+            if(half->val!=s.top()) return false;
+            else 
+            {
+                s.pop();
+                half=half->next;
+            }
+        }
+        
+        return true;
+}
 
 
