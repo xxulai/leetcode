@@ -69,4 +69,5 @@ public:
 	vector<string> summaryRanges(vector<int>& nums); //Given a sorted integer array without duplicates, return the summary of its ranges. 
 	int sumRange(int i, int j); //Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. DP problem!!
 	bool wordPattern(string pattern, string str); //pattern = "abba", str = "dog cat cat dog" should return true.   pattern = "aaaa", str = "dog cat cat cat" should return false
+	string getHint(string secret, string guess); //Secret number:  "1807" Friend's guess: "7810"  return 1A3B    Secret number:  "1123"   Friend's guess: "0111"  return 1A1B
 };

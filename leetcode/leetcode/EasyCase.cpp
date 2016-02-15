@@ -1196,4 +1196,41 @@ bool EasyCase::wordPattern(string pattern, string str)
 	return true;
 }
 
+string EasyCase::getHint(string secret, string guess)
+{
+	string nsecret, nguess, ret="";
+
+	ostringstream s1;
+	
+    int count=0;
+
+	for(int index=0; index<secret.length(); index++)
+	{
+		if(secret[index]==guess[index])
+			count++;
+		else
+		{
+			nsecret+=secret[index];
+			nguess+=guess[index];
+		}
+	}
+	s1<<count<<"A";
+	
+	count=0;
+
+	for(string::iterator ch=nguess.begin(); ch!=nguess.end(); ch++)
+	{
+		if(nsecret.find(*ch)!=nsecret.npos)
+		{
+			count++;
+			nsecret.replace(nsecret.find(*ch), 1, "");
+		}
+	}
+
+	s1<<count<<"B";
+	ret=s1.str();
+
+	return ret;
+}
+
 

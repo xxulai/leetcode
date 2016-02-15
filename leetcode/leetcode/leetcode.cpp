@@ -802,6 +802,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	string pa_str="cat cat cat cat";
 	bool pa_r=ec->wordPattern(pattern, pa_str);
 
+	string str_hint=ec->getHint("1234","0111");
 	return 0;
 }
 
