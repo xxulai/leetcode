@@ -68,4 +68,5 @@ public:
 	int firstBadVersion(int n); //Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad. 
 	vector<string> summaryRanges(vector<int>& nums); //Given a sorted integer array without duplicates, return the summary of its ranges. 
 	int sumRange(int i, int j); //Given an integer array nums, find the sum of the elements between indices i and j (i ≤ j), inclusive. DP problem!!
+	bool wordPattern(string pattern, string str); //pattern = "abba", str = "dog cat cat dog" should return true.   pattern = "aaaa", str = "dog cat cat cat" should return false
 };

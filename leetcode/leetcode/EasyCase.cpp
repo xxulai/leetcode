@@ -1158,4 +1158,42 @@ bool EasyCase::isPalindrome_lessspace(ListNode* head) {
         return true;
 }
 
+bool EasyCase::wordPattern(string pattern, string str)
+{
+	vector<string> vec_str;
+	string tmp="";
+	unordered_map<char, string> mp;
+	unordered_map<string, char> rmp;
+
+	for(string::iterator ch=str.begin(); ch!=str.end(); ch++)
+	{
+		if(*ch!=' ')
+			tmp+=*ch;
+		else
+		{
+			vec_str.push_back(tmp);
+			tmp="";
+		}
+	}
+
+	if(tmp!="") vec_str.push_back(tmp);
+
+	if(pattern.length()!=vec_str.size()) return false;
+
+	for(int index=0; index<pattern.length(); index++)
+	{
+		if(!mp.count(pattern[index]) && !rmp.count(vec_str[index]))
+		{
+			mp.insert(pair<char, string>(pattern[index], vec_str[index]));
+			rmp.insert(pair<string, char>(vec_str[index], pattern[index]));
+		}
+		else if(mp[pattern[index]]!=vec_str[index] || rmp[vec_str[index]]!=pattern[index])
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 

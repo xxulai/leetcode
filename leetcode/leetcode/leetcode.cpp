@@ -798,6 +798,10 @@ int _tmain(int argc, _TCHAR* argv[])
 	pdp2->next=pdp3;
 	bool pbvalue=ec->isPalindrome_lessspace(pdp1);
 
+	string pattern="abba";
+	string pa_str="cat cat cat cat";
+	bool pa_r=ec->wordPattern(pattern, pa_str);
+
 	return 0;
 }
 
