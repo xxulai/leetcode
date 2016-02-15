@@ -803,6 +803,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	bool pa_r=ec->wordPattern(pattern, pa_str);
 
 	string str_hint=ec->getHint("1234","0111");
+
+	bool isvalidb=ec->isValid("({[[[]]]})");
+
 	return 0;
 }
 

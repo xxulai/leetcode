@@ -1233,4 +1233,41 @@ string EasyCase::getHint(string secret, string guess)
 	return ret;
 }
 
+bool EasyCase::isValid(string s)
+{
+	vector<char> ch_vec;
+	unordered_map<char, char> mp;
+
+	for(string::iterator ch=s.begin(); ch!=s.end(); ch++)
+	{
+		if(*ch=='(' || *ch==')' || *ch=='{' || *ch=='}' || *ch=='[' || *ch==']')
+		{
+			ch_vec.push_back(*ch);
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	mp.insert(pair<char, char>('(', ')'));
+	mp.insert(pair<char, char>('[', ']'));
+	mp.insert(pair<char, char>('{', '}'));
+
+	while(ch_vec.size()!=0)
+	{		
+		if(mp[ch_vec.at(0)]!=ch_vec.back())
+		{
+			return false;
+		}
+		else
+		{
+			ch_vec.erase(ch_vec.begin());
+			ch_vec.erase(ch_vec.end()-1);
+		}
+	}
+
+	return true;
+}
+
 
