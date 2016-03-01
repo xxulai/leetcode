@@ -1,8 +1,6 @@
 ﻿#include "stdafx.h"
 #include "DataStructure.h"
 
-using namespace std;
-
 class EasyCase{
 
 public:
