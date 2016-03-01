@@ -1,4 +1,4 @@
-// leetcode.cpp : Defines the entry point for the console application.
+﻿// leetcode.cpp : Defines the entry point for the console application.
 //
 
 #include "stdafx.h"
@@ -6,6 +6,11 @@
 #include "EasyCase.h"
 #include "MediumCase.h"
 #include "HardCase.h"
+#include "Util.h"
+
+#include "DataStructure.h"
+
+using namespace std;
 
 
 /*
@@ -694,7 +699,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//mc->reorderList(reversehead);
 
-	string str="Wünscher";   //"W�nscher"
+	string str="WÃ¼nscher";   //"Wünscher"
 	string outstr="";
 	int ch=0;
 	for(string::iterator a=str.begin(); a!=str.end(); a++){
@@ -734,7 +739,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	language_mp[ss.at(0)].insert(pair<string, string>(ss.at(1), ss.at(2)));
 
-	const char* sstr="Vo-LC™";
+	const char* sstr="Vo-LCâ„¢";
 	unsigned offSet=9;
 	sstr=sstr+offSet;
 
@@ -805,6 +810,17 @@ int _tmain(int argc, _TCHAR* argv[])
 	string str_hint=ec->getHint("1234","0111");
 
 	bool isvalidb=ec->isValid("({[[[]]]})");
+
+	vector<int> odd_list;
+	odd_list.push_back(1);
+	odd_list.push_back(2);
+	odd_list.push_back(3);
+	odd_list.push_back(4);
+	odd_list.push_back(5);
+	Util util;
+	ListNode *oddlink=util.genListNodeList(odd_list);
+
+	//ec->oddEvenList()
 
 	return 0;
 }

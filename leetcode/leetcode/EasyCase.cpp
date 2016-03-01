@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "EasyCase.h"
+#include "Util.h"
+#include "DataStructure.h"
 
 bool EasyCase::isPalindrome(string s){
 	bool ret=true;
@@ -1270,4 +1272,44 @@ bool EasyCase::isValid(string s)
 	return true;
 }
 
+int EasyCase::computeArea(int A, int B, int C, int D, int E, int F, int G, int H)
+{
+
+	int overLeft = max(A, E);  
+    int overBottom = max(B, F);  
+    int overRight = min(C, G);  
+    int overTop = min(D, H);  
+          
+    int overArea = 0;  
+    if(overLeft>=overRight || overBottom>=overTop){  
+        overArea = 0;  
+    }else{  
+        overArea = (overRight-overLeft) * (overTop - overBottom);  
+    }  
+    return (C-A)*(D-B) + (G-E)*(H-F) - overArea;  
+
+}
+
+ListNode* EasyCase::oddEvenList(ListNode* head)
+{
+	if(head==NULL || head->next==NULL || head->next->next==NULL) return head;
+
+	ListNode *oddnext=head->next->next;
+	ListNode *odd=head;
+	ListNode *even=odd->next;
+	ListNode *tailhead=head->next->next->next;
+
+	while(tailhead!=NULL)
+	{
+		odd->next=oddnext;
+		oddnext->next=even;
+		even->next=tailhead;
+		odd=odd->next;
+		oddnext=oddnext->next;
+		even=even->next;
+		tailhead=tailhead->next;
+	}
+
+	return head;
+}
 

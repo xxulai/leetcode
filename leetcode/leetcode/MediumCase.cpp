@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "MediumCase.h"
+#include "DataStructure.h"
 
 static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist){
 

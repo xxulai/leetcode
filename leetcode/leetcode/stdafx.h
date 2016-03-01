@@ -6,7 +6,6 @@
 #pragma once
 
 #include "targetver.h"
-#include "DataStructure.h"
 
 #include <stdint.h>
 #include <math.h>
@@ -21,9 +20,5 @@
 #include <map>
 #include <limits>
 #include <stack>
-
-using namespace std;
-
-
 
 // TODO: reference additional headers your program requires here

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "DataStructure.h"
 
 class HardCase{
 public:

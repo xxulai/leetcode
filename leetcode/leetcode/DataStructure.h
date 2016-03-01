@@ -1,7 +1,13 @@
+#ifndef DATASTRUCTURE_H
+#define DATASTRUCTURE_H
+
+using namespace std;
+
 struct ListNode {
      int val;
      ListNode *next;
-     ListNode(int x) : val(x), next(nullptr) {}
+	 std::string sval;
+	 ListNode(int x) : val(x), next(nullptr) {}	 
 };
 
 struct TreeNode {
@@ -16,3 +22,5 @@ struct TreeNodeList{
 	TreeNode *next;
 	TreeNodeList(): node(nullptr), next(nullptr){}
 };
+
+#endif
