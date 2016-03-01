@@ -7,7 +7,8 @@ struct ListNode {
      int val;
      ListNode *next;
 	 std::string sval;
-	 ListNode(int x) : val(x), next(nullptr) {}	 
+	 ListNode(int x) : val(x), next(nullptr) {};
+	 ListNode(std::string x) : sval(x), next(nullptr) {}	 
 };
 
 struct TreeNode {
