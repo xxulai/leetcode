@@ -994,6 +994,7 @@ int EasyCase::hammingWeight(uint32_t n) {
         return cnt;
     }
 
+//without loop version, return n==0 ? false : n==Math.pow(3, Math.round(Math.log(n) / Math.log(3)));
 bool EasyCase::isPowerOfThree(int n)
 {
 	if(n==0) return false;
@@ -1292,22 +1293,27 @@ int EasyCase::computeArea(int A, int B, int C, int D, int E, int F, int G, int H
 
 ListNode* EasyCase::oddEvenList(ListNode* head)
 {
-	if(head==NULL || head->next==NULL || head->next->next==NULL) return head;
+	if(head==NULL || head->next==NULL ||head->next->next==NULL) return head;
 
-	ListNode *oddnext=head->next->next;
-	ListNode *odd=head;
-	ListNode *even=odd->next;
-	ListNode *tailhead=head->next->next->next;
+	ListNode* p=head;
+	ListNode* otail=head;
+	ListNode* etail=head->next;
+	ListNode* tmp=head;
+	int count=2;
 
-	while(tailhead!=NULL)
+	while(etail!=NULL && etail->next!=NULL)
 	{
-		odd->next=oddnext;
-		oddnext->next=even;
-		even->next=tailhead;
-		odd=odd->next;
-		oddnext=oddnext->next;
-		even=even->next;
-		tailhead=tailhead->next;
+		for(int i=0; i<count; i++)
+		{
+			p=p->next;
+		}
+		tmp=p->next;
+		p->next=otail->next;
+		otail->next=p;
+		etail->next=tmp;
+		otail=otail->next;
+		etail=etail->next;
+		count++;
 	}
 
 	return head;

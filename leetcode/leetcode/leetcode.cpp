@@ -817,10 +817,15 @@ int _tmain(int argc, _TCHAR* argv[])
 	odd_list.push_back(3);
 	odd_list.push_back(4);
 	odd_list.push_back(5);
+	odd_list.push_back(6);
+	odd_list.push_back(7);
+	odd_list.push_back(8);
+
+
 	Util util;
 	ListNode *oddlink=util.genListNodeList(odd_list);
 
-	//ec->oddEvenList()
+	ListNode* hh=ec->oddEvenList(oddlink);
 
 	return 0;
 }
