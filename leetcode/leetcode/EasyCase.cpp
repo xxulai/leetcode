@@ -1298,7 +1298,6 @@ ListNode* EasyCase::oddEvenList(ListNode* head)
 	ListNode* p=head;
 	ListNode* otail=head;
 	ListNode* etail=head->next;
-	ListNode* tmp=head;
 	int count=2;
 
 	while(etail!=NULL && etail->next!=NULL)
@@ -1307,10 +1306,9 @@ ListNode* EasyCase::oddEvenList(ListNode* head)
 		{
 			p=p->next;
 		}
-		tmp=p->next;
+		etail->next=p->next;
 		p->next=otail->next;
 		otail->next=p;
-		etail->next=tmp;
 		otail=otail->next;
 		etail=etail->next;
 		count++;
