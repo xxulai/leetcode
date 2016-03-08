@@ -10,6 +10,8 @@
 
 #include "DataStructure.h"
 
+#define INT_LENGTH(a) sizeof(a)/sizeof(int)
+
 using namespace std;
 
 
@@ -827,6 +829,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	ListNode *oddlink=util.genListNodeList(odd_list);
 
 	ListNode* hh=ec->oddEvenList(oddlink);
+
+	int parr[]={5,9,2,-9,-9,-7,-8,7,-9,10};
+	vector<int> pvec=util.getVecByArray(parr, INT_LENGTH(parr));
+	
+	mc->productExceptSelf(pvec);
 
 	return 0;
 }

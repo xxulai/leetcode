@@ -24,4 +24,6 @@ public:
 		}
 		return head;
 	}
+
+	vector<int> getVecByArray(int[], int);
 };

@@ -18,6 +18,7 @@ public:
 	  bool containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t); //Given an array of integers, find out whether there are two distinct indices i and j in the array such that the difference between nums[i] and nums[j] is at most t and the difference between i and j is at most k. 
 	  int singleNumber(vector<int>& nums); //Given an array of integers, every element appears twice except for one. Find that single one.
 	  vector<int> singleNumberIII(vector<int>& nums);//Given an array of numbers nums, in which exactly two elements appear only once and all the other elements appear exactly twice. Find the two elements that appear only once
+	  vector<int> productExceptSelf(vector<int>& nums); //Given an array of n integers where n > 1, nums, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].Solve it without division and in O(n).
 private: 
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };
