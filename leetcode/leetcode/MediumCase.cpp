@@ -300,3 +300,56 @@ bool MediumCase::containsNearbyAlmostDuplicate(vector<int>& nums, int k, int t){
     return false;
 
 }
+
+int MediumCase::singleNumber(vector<int>& nums) {
+        
+        unordered_map<int, bool> mp;
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(mp.count(nums.at(i)))
+            {
+                mp[nums.at(i)]=true;
+                continue;
+            }
+            else
+            {
+                mp.insert(pair<int, int>(nums.at(i), false));
+            }
+        }
+        
+        for(unordered_map<int, bool>::iterator it=mp.begin(); it!=mp.end(); it++)
+        {
+            if(!it->second)  return it->first;
+            
+        }
+        return -1;
+}
+
+vector<int> MediumCase::singleNumberIII(vector<int>& nums) {
+         unordered_map<int, bool> mp;
+         vector<int> ret;
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(mp.count(nums.at(i)))
+            {
+                mp[nums.at(i)]=true;
+                continue;
+            }
+            else
+            {
+                mp.insert(pair<int, int>(nums.at(i), false));
+            }
+        }
+        
+        for(unordered_map<int, bool>::iterator it=mp.begin(); it!=mp.end(); it++)
+        {
+            if(!it->second)
+            {
+                ret.push_back(it->first);
+            }
+            
+        }
+        return ret;
+}
