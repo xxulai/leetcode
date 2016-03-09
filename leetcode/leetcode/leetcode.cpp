@@ -835,6 +835,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	pvec=mc->productExceptSelf(pvec);
 
+	int bret=mc->bulbSwitch(3);
+
 	return 0;
 }
 
