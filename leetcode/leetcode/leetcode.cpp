@@ -833,7 +833,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	int parr[]={5,9,2,-9,-9,-7,-8,7,-9,10};
 	vector<int> pvec=util.getVecByArray(parr, INT_LENGTH(parr));
 	
-	mc->productExceptSelf(pvec);
+	pvec=mc->productExceptSelf(pvec);
 
 	return 0;
 }

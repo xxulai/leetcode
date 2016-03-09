@@ -356,47 +356,20 @@ vector<int> MediumCase::singleNumberIII(vector<int>& nums) {
 
 vector<int> MediumCase::productExceptSelf(vector<int>& nums) {
         vector<int> ret;
-        bool zero=false;
-        
-        int sum=nums.at(0);
-        
-        for(int i=1; i<nums.size(); i++)
-        {
-            if(nums.at(i)==0) 
-            {
-                zero=true;
-                continue;
-            }
-            sum=sum*nums.at(i);
-        }
-        
-        for(int i=0; i<nums.size(); i++)
-        {
-            if(zero && nums.at(i)==0) 
-            {
-                ret.push_back(sum);
-                continue;
-            }
-            else if(zero) 
-            {
-                ret.push_back(0);
-                continue;
-            }
-            
-            int t1=0;
-            int t2=sum;
-            
-            while(t2!=0)
-            {
-                t2=abs(t2)-abs(nums.at(i));
-                t1++;
-            }
-            if((sum<0 && nums.at(i)>0) || (sum>0 && nums.at(i)<0))
-            {
-                ret.push_back(t1*-1);
-            }
-            else ret.push_back(t1);
-        }
-        
+		        
+        int lproduct=1;
+		for(int i=0; i<nums.size(); i++)
+		{
+			if(i!=0) lproduct=lproduct*nums.at(i-1);
+			ret.push_back(lproduct);
+		}
+
+		int rproduct=1;
+		for(int i=(nums.size()-1); i>=0; i--)
+		{
+			if(i!=(nums.size()-1)) rproduct=rproduct*nums.at(i+1);
+			ret.at(i)=ret.at(i)*rproduct;
+		}
+
         return ret;
 }
