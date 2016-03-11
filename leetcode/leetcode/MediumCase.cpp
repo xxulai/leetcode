@@ -375,28 +375,25 @@ vector<int> MediumCase::productExceptSelf(vector<int>& nums) {
 }
 
 int MediumCase::bulbSwitch(int n) {
-        vector<bool> vec;
-        int count=0;
+        vector<int> vec;
+        int div, mod, count=0;
 
 		if(n<=0) return 0;
         
-        for(int i=0; i<n; i++)
-        {
-            vec.push_back(false);
-        }
-        
-        for(int i=2; i<n; i++)
-        {
-            for(int j=0; j<n; j+=i)
-            {
-                if(vec.at(j)) vec.at(j)=false;
-                else vec.at(j)=true;
-            }
-        }
-        vec.at(n-1)=false;
+        div=n/32;
+		mod=n%32;
 
-        for(int i=0; i<n; i++)
+		for(int i=0; i<div; i++)
+			vec.push_back(0xffff);
+		vec.push_back(mod);
+
+		for(int i=1; i<n; i++)
         {
+			int step=>>i
+			for(int j=0; j<vec.size(); j++)
+			{
+				
+			}
             if(vec.at(i)) count++;
         }
         return count;
