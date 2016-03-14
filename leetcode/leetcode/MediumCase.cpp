@@ -375,7 +375,7 @@ vector<int> MediumCase::productExceptSelf(vector<int>& nums) {
 }
 
 int MediumCase::bulbSwitch(int n) {
-        return ( (int) sqrt(n) );
+        return ((int)sqrtf(n));
 }
 
 int MediumCase::missingNumber(vector<int>& nums) {
