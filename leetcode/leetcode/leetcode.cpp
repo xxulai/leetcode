@@ -837,6 +837,12 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	int bret=mc->bulbSwitch(999999);
 
+
+	int sar[]={1,1,0,0,99,0,1};
+	vector<int> svec=util.getVecByArray(sar, INT_LENGTH(sar));
+	
+	int sret=mc->singleNumberII(svec);
+
 	return 0;
 }
 

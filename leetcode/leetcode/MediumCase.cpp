@@ -384,3 +384,20 @@ int MediumCase::missingNumber(vector<int>& nums) {
         for (int i=0; i<nums.size(); i++) x ^= nums.at(i);
         return x;
 }
+
+int MediumCase::singleNumberII(vector<int>& nums) {
+        sort(nums.begin(), nums.end());
+        
+        int step=3;
+        
+		if(nums.size()<step) return nums.at(0);
+
+        for(int i=0; i<nums.size(); i+=step)
+        {
+			if((nums.size()-i)<step) return nums.at(i);
+
+            if(nums.at(i)*step==(nums.at(i)+nums.at(i+1)+nums.at(i+2))) continue;
+            else return nums.at(i)^nums.at(i+1)^nums.at(i+2);
+        }
+        return nums.at(0);
+    }

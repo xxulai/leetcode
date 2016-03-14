@@ -21,6 +21,7 @@ public:
 	  vector<int> productExceptSelf(vector<int>& nums); //Given an array of n integers where n > 1, nums, return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].Solve it without division and in O(n).
 	  int bulbSwitch(int n); //There are n bulbs that are initially off. You first turn on all the bulbs. Then, you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb.
 	  int missingNumber(vector<int>& nums);  //Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array. Given nums = [0, 1, 3] return 2.
+	  int singleNumberII(vector<int>& nums); //Given an array of integers, every element appears three times except for one. Find that single one.
 private: 
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };
