@@ -377,3 +377,27 @@ vector<int> MediumCase::productExceptSelf(vector<int>& nums) {
 int MediumCase::bulbSwitch(int n) {
         return ( (int) sqrt(n) );
 }
+
+int MediumCase::missingNumber(vector<int>& nums) {
+        
+        sort(nums.begin(), nums.end());
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if((i+1)<nums.size())
+            {
+                if(nums.at(i+1)-nums.at(i)!=1)
+                {
+                    return nums.at(i)+1;
+                }
+            }
+            else
+            {
+                if(nums.at(0)==0)
+                    return nums.at(i)+1;
+                else 
+                    return nums.at(0)-1;
+            }
+        }
+        return 0;
+}
