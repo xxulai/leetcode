@@ -400,4 +400,30 @@ int MediumCase::singleNumberII(vector<int>& nums) {
             else return nums.at(i)^nums.at(i+1)^nums.at(i+2);
         }
         return nums.at(0);
+}
+
+bool MediumCase::wordBreak(string s, unordered_set<string>& wordDict)
+{
+	unordered_map<string, bool> mp;
+	for(unordered_set<string>::iterator it=wordDict.begin(); it!=wordDict.end(); it++)
+	{
+		
+	}
+	return true;
+}
+
+string MediumCase::removeDuplicateLetters(string s) {
+
+    for(string::iterator it=s.begin(); it!=s.end(); it++)
+    {
+        while(s.find(*it, it-s.begin()+1)!=s.npos)
+        {
+            s=s.replace(s.find(*it, it-s.begin()+1), 1, "");
+        }
     }
+        
+    //sort(s.begin(), s.end());//smallest existing lexicongraphic not smallest set which doesn't exist
+
+        
+    return s;
+}

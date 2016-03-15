@@ -22,6 +22,8 @@ public:
 	  int bulbSwitch(int n); //There are n bulbs that are initially off. You first turn on all the bulbs. Then, you turn off every second bulb. On the third round, you toggle every third bulb (turning on if it's off or turning off if it's on). For the ith round, you toggle every i bulb. For the nth round, you only toggle the last bulb.
 	  int missingNumber(vector<int>& nums);  //Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one that is missing from the array. Given nums = [0, 1, 3] return 2.
 	  int singleNumberII(vector<int>& nums); //Given an array of integers, every element appears three times except for one. Find that single one.
+	  bool wordBreak(string s, unordered_set<string>& wordDict); //Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.For example, given s = "leetcode", dict = ["leet", "code"].
+	  string removeDuplicateLetters(string s); //Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
 private: 
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };
