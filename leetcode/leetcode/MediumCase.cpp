@@ -414,16 +414,25 @@ bool MediumCase::wordBreak(string s, unordered_set<string>& wordDict)
 
 string MediumCase::removeDuplicateLetters(string s) {
 
-    for(string::iterator it=s.begin(); it!=s.end(); it++)
-    {
-        while(s.find(*it, it-s.begin()+1)!=s.npos)
-        {
-            s=s.replace(s.find(*it, it-s.begin()+1), 1, "");
-        }
-    }
-        
-    //sort(s.begin(), s.end());//smallest existing lexicongraphic not smallest set which doesn't exist
+	int count[26];
+	string strbuf=s;
+	int pos = 0;  
 
-        
-    return s;
+	for(int i=0; i<26; i++) count[i]=0;
+    for(int i=0; i<s.length(); i++) count[s.at(i) - 'a']++;  
+    
+	for(int i=0; i<26; i++)
+	{
+		if(count[i]<=1) continue;
+		pos=strbuf.find('a'+i);
+		string ss=strbuf.substr(pos+1);
+		ss=util.replaceAll(ss, 'a'+i);
+		strbuf=strbuf.substr(0, pos+1)+ss;
+	}
+	return strbuf;
+	/*for(int i=0; i<s.length(); i++) {  
+        if(s.at(i)< s.at(pos)) pos = i;  
+        if(--count[s.at(i) - 'a'] == 0) break;  
+	}  
+    return s.length() == 0? "" : s.at(pos) + removeDuplicateLetters(util.replaceAll(s.substr(pos+1), s.at(pos)));  */
 }

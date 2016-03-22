@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "DataStructure.h"
+#include "Util.h"
 
 class MediumCase{
 public:
@@ -25,5 +26,6 @@ public:
 	  bool wordBreak(string s, unordered_set<string>& wordDict); //Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.For example, given s = "leetcode", dict = ["leet", "code"].
 	  string removeDuplicateLetters(string s); //Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
 private: 
+	Util util;
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
 };

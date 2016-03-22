@@ -13,3 +13,17 @@ vector<int> Util::getVecByArray(int arr[], int length)
 	return ret;
 }
 
+string Util::replaceAll(string s, char c)
+{
+	vector<char> ch;
+	string strbuf="";
+
+	for(string::iterator it=s.begin(); it!=s.end(); it++)
+	{
+		if(*it!=c) ch.push_back(*it);
+	}
+	for(int i=0; i<ch.size(); i++)
+		strbuf+=ch.at(i);
+	return strbuf;
+}
+

@@ -1,3 +1,6 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #include "DataStructure.h"
 
 class Util{
@@ -26,4 +29,7 @@ public:
 	}
 
 	vector<int> getVecByArray(int[], int);
+	string replaceAll(string, char);
 };
+
+#endif

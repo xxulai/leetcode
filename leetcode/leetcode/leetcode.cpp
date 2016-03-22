@@ -843,7 +843,9 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 	int sret=mc->singleNumberII(svec);
 
-	string ss1=mc->removeDuplicateLetters("bcabc");
+	string ss1=mc->removeDuplicateLetters("bcadc");
+
+	string rstr=mc->removeDuplicateLetters("bcabc");
 
 	return 0;
 }
