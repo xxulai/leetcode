@@ -27,6 +27,7 @@ public:
 	  string removeDuplicateLetters(string s); //Given a string which contains only lowercase letters, remove duplicate letters so that every letter appear once and only once. You must make sure your result is the smallest in lexicographical order among all possible results.
 	  void reverseWords(string &s); //Given an input string, reverse the string word by word. For example, Given s = "the sky is blue", return "blue is sky the".
 	  int divide(int dividend, int divisor); //Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT. 
+	  int searchInsert(vector<int>& nums, int target); //Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. [1,3,5,6], 5 → 2
 private: 
 	Util util;
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);

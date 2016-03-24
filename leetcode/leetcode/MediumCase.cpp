@@ -480,4 +480,22 @@ int MediumCase::divide(int dividend, int divisor) {
 		}
         
         return count;
-    }
+}
+
+int MediumCase::searchInsert(vector<int>& nums, int target) {
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums.at(i)==target) return i;
+        }
+        
+        if(target<nums.at(0)) return 0;
+        if(target>nums.at(nums.size()-1)) return nums.size();
+        
+        for(int i=0; i<nums.size(); i++)
+        {
+            if(nums.at(i)<target && nums.at(i+1)>target) return i+1;
+        }
+        return 0;
+}
+
