@@ -847,6 +847,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	string rstr=mc->removeDuplicateLetters("bcabc");
 
+	string rrstr=" ";
+	mc->reverseWords(rrstr);
+
 	return 0;
 }
 

@@ -436,3 +436,32 @@ string MediumCase::removeDuplicateLetters(string s) {
 	}  
     return s.length() == 0? "" : s.at(pos) + removeDuplicateLetters(util.replaceAll(s.substr(pos+1), s.at(pos)));  */
 }
+
+void MediumCase::reverseWords(string &s)
+{
+	vector<string> vec;
+	string buf;
+	for(string::iterator it=s.begin(); it!=s.end(); it++)
+	{
+		if(*it!=' ')
+		{
+			buf+=*it;
+		}
+		else if(buf!="")
+		{
+			vec.push_back(buf);
+			buf="";
+		}
+	}
+
+	if(buf!="") vec.push_back(buf);  //last word without space
+
+	s="";
+	int count=vec.size();
+	for(int i=0; i<count; i++)
+	{
+		s+=vec.back()+" ";
+		vec.pop_back();
+	}
+	s=s.substr(0, s.length()-1);
+}
