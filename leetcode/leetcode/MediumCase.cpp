@@ -465,3 +465,19 @@ void MediumCase::reverseWords(string &s)
 	}
 	s=s.substr(0, s.length()-1);
 }
+
+int MediumCase::divide(int dividend, int divisor) {
+        int buf=dividend;
+        int count=0;
+        while(abs(buf)>=abs(divisor))
+        {
+            buf=buf+~(divisor-1);
+            count++;
+        }
+        if((dividend>0 && divisor<0) || (dividend<0 && divisor>0)) 
+		{
+			count=~(count-1);
+		}
+        
+        return count;
+    }

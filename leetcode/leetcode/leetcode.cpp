@@ -850,6 +850,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	string rrstr=" ";
 	mc->reverseWords(rrstr);
 
+	int ddint=mc->divide(2147483647, 1);
+
 	return 0;
 }
 
