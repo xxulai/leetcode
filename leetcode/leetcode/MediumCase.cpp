@@ -499,3 +499,22 @@ int MediumCase::searchInsert(vector<int>& nums, int target) {
         return 0;
 }
 
+vector<int> MediumCase::countBits(int num) {
+        vector<int> ret;
+        ret.push_back(0);
+        for(int i=1; i<=num; i++)
+        {
+            int buf=i;
+            int count=0;
+            while(buf!=0)
+            {
+                if(buf%2!=0) count++;
+                buf=buf/2;
+            }
+            ret.push_back(count);
+        }
+        
+        return ret;
+    }
+};
+

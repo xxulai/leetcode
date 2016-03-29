@@ -28,6 +28,7 @@ public:
 	  void reverseWords(string &s); //Given an input string, reverse the string word by word. For example, Given s = "the sky is blue", return "blue is sky the".
 	  int divide(int dividend, int divisor); //Divide two integers without using multiplication, division and mod operator. If it is overflow, return MAX_INT. 
 	  int searchInsert(vector<int>& nums, int target); //Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order. [1,3,5,6], 5 → 2
+	  vector<int> countBits(int num); //Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
 private: 
 	Util util;
 	//static void getPath(TreeNode *leaf, vector<int> &list, vector<vector<int>> &retlist);
