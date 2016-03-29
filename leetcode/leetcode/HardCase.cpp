@@ -41,3 +41,38 @@ int HardCase::firstMissingPositive(vector<int>& nums)
 
 	return nums.at(length-1)+1;
 }
+
+bool HardCase::isNumber(string s) {
+        string buf=s;
+        
+        string::iterator it=s.begin();
+        //remove space head and tail
+        for(; it!=s.end(); it++)
+        {
+            if(*it!=' ') break; 
+        }
+        buf=s.substr(it-s.begin());
+        
+        for(int index=buf.length()-1; index>=0; index--)
+        {
+            if(buf[index]!=' ')
+			{
+				buf=buf.substr(0, index+1);
+				break;
+			}
+        }
+        
+        //if there is invalid space and multiple . inside?
+        it=buf.begin();
+        for(; it!=buf.end(); it++)
+        {
+            if(*it==' ') return false;
+            if(*it<'0' || *it>'9')
+            {
+                if(*it=='.' && (*(it+1)>=0 || *(it+1)<=9)) continue;
+                else return false;
+            }
+        }
+        if(buf=="") return false;
+        return true;
+    }
