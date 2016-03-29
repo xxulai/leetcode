@@ -515,6 +515,25 @@ vector<int> MediumCase::countBits(int num) {
         }
         
         return ret;
-    }
-};
+}
+
+bool MediumCase::hasCycle(ListNode *head) {
+        ListNode *p1=head;
+        ListNode *runner=head;
+        
+        if(p1==NULL || p1->next==NULL) return false;
+        
+        p1=p1->next;
+        runner=runner->next->next;
+        
+        while(p1!=runner && runner!=NULL && runner->next!=NULL)
+        {
+            p1=p1->next;
+            runner=runner->next->next;
+        }
+        
+        if(p1==runner) return true;
+        
+        return false;
+ }
 
