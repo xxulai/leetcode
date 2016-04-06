@@ -852,7 +852,9 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	//int ddint=mc->divide(2147483647, 1);
 
-	bool isn=hc->isNumber("    1   ");
+	//bool isn=hc->isNumber("-1.");
+	//isn=hc->isNumber("2e0");
+	bool isn=hc->isNumber(" 005047e+6");
 
 	return 0;
 }
