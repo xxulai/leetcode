@@ -856,6 +856,11 @@ int _tmain(int argc, _TCHAR* argv[])
 	//isn=hc->isNumber("2e0");
 	bool isn=hc->isNumber(" 005047e+6");
 
+	int ttr=69;
+	string rh=hc->readhundred(ttr);
+	ttr=123;
+	rh=hc->numberToWords(ttr);
+
 	return 0;
 }
 

@@ -159,3 +159,106 @@ bool HardCase::isNumber(string s) {
 
         return true;
 }
+
+string HardCase::numberToWords(int num)
+{
+	string number[]={"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+	string bit[]={"null", "Thousand", "Million", "Billion", "Trillion"};
+	
+	if(num==0) return "Zero";
+
+	int count=0;
+	int buf=num;
+
+	string ret="";
+	string buf_num="";
+	string s_num="";
+
+	while(num!=0)
+	{
+		num=num/10;
+		count++;
+	}
+	while(buf!=0)
+	{
+		buf_num+=number[buf%10];
+		buf=buf/10;
+	}
+	for(string::reverse_iterator rit=buf_num.rbegin(); rit!=buf_num.rend(); rit++)
+	{
+		s_num+=*rit;
+	}
+
+	int highestbit=0;
+	if(count%3==0)
+		highestbit=count/3-1;
+	else 
+		highestbit=count/3;
+	for(int i=0; i<count; )
+	{
+		string input="";
+		if(i==0)
+		{
+			if(count%3==0)
+			{
+				input=s_num.substr(0, 3); //read highest bit
+				i+=3;
+			}
+			else
+			{
+				input=s_num.substr(0, count%3); //read highest bit
+				i+=count%3;
+			}
+		}
+		else
+		{
+			input=s_num.substr(i, 3);
+			i+=3;
+		}
+		if(highestbit>=1)
+		{
+			if(atoi(input.c_str())!=0)
+				ret+=readhundred(atoi(input.c_str()))+" "+bit[highestbit]+" ";
+		}
+		else 
+			ret+=readhundred(atoi(input.c_str()));
+		highestbit--;
+	}
+
+	return ret;
+}
+
+string HardCase::readhundred(int num)
+{
+		string word[]={"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", 
+					"Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
+					"Twenty", "","","","","","","","","", 
+					"Thirty", "","","","","","","","","",
+					"Forty" , "","","","","","","","","",
+					"Fifty" , "","","","","","","","","",
+					"Sixty" , "","","","","","","","","",
+				  "Seventy" , "","","","","","","","","",
+				   "Eighty" , "","","","","","","","","",
+				   "Ninety"  , "","","","","","","","",""
+				  };
+	string ret="";
+	
+	if(num==0) return ret;
+
+	if(num>=100)	ret+=word[num/100-1]+" Hundred ";
+	num=num-num/100*100;
+
+	if(num!=0) //remove num=100, 200, 300 etc. case
+	{
+		if(word[num-1]!="") ret+=word[num-1]+" ";
+		else 
+		{
+			ret+=word[num/10*10-1]+" ";
+			num=num-num/10*10;
+			ret+=word[num-1];
+		}
+	}
+	
+	if(ret[ret.length()-1]==' ') ret=ret.substr(0,ret.length()-1);
+	return ret;
+}
