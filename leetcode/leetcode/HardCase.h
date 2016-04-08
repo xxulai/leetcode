@@ -16,4 +16,9 @@ public:
 									12345 -> "Twelve Thousand Three Hundred Forty Five"
 									1234567 -> "One Million Two Hundred Thirty Four Thousand Five Hundred Sixty Seven"*/
 	string readhundred(int num); //read hundread, int 234->two hundred thirty four
+	int calculate(string s); /*"1 + 1" = 2
+								" 2-1 + 2 " = 3
+								"(1+(4+5+2)-3)+(6+8)" = 23*/
+	int cal(string s);
+	int stoi(string s);  //from string to integer
 };

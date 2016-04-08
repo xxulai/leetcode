@@ -262,3 +262,130 @@ string HardCase::readhundred(int num)
 	if(ret[ret.length()-1]==' ') ret=ret.substr(0,ret.length()-1);
 	return ret;
 }
+
+int HardCase::calculate(string s)
+{
+		int ret=0;
+
+		string buf="";
+		string tmp="";
+        stack<char> st;
+		stack<char> rst;
+        
+        //remove all spaces
+        for(string::iterator it=s.begin(); it!=s.end(); it++)
+        {
+            if(*it!=' ') buf+=*it;
+        }
+        
+        for(string::iterator it=buf.begin(); it!=buf.end(); it++)
+        {
+			//equation is always legal
+			if(*it==')')
+			{
+				while(st.top()!='(')
+				{
+					tmp+=st.top();
+					st.pop();
+				}
+				st.pop(); //pop '('
+
+				//revert tmp
+				string rtmp="";
+				for(string::reverse_iterator rit=tmp.rbegin(); rit!=tmp.rend(); rit++)
+				{
+					rtmp+=*rit;
+				}
+				//calculate the tmp
+				stringstream ss;
+				int tt=cal(rtmp);
+				if(tt<0 && st.size())
+				{
+					//when eq result is <0, change the op accordingly
+					if(st.top()=='+')
+					{
+						st.pop();
+						st.push('-');
+					}
+					else if(st.top()=='-')
+					{
+						st.pop();
+						st.push('+');
+					}
+					tt=abs(tt);
+				}
+				ss<<tt;
+				tmp=ss.str();
+				for(string::reverse_iterator sit=tmp.rbegin(); sit!=tmp.rend(); sit++)
+				{
+					st.push(*sit);
+				}
+				tmp="";
+			}
+            else 
+            {
+				st.push(*it);
+            }
+        }
+      
+		while(st.size())
+		{
+			rst.push(st.top());
+			st.pop();
+		}
+
+		buf="";
+		while(rst.size())
+		{
+			buf+=rst.top();
+			rst.pop();
+		}
+
+		ret=cal(buf);
+
+		return ret;
+}
+
+int HardCase::stoi(string s)
+{
+	int ret=0;
+	int carry=0;
+	for(string::reverse_iterator it=s.rbegin(); it!=s.rend(); it++)
+	{
+		ret+=(*it-48)*(int)pow(10.0, carry);
+		carry++;
+	}
+	return ret;
+}
+
+int HardCase::cal(string s)
+{
+	int step=0;
+	int ret=0;
+	string buf="";
+	vector<string> v;
+	
+
+	for(string::iterator it=s.begin(); it!=s.end();it++)
+	{
+		if(*it=='+' || *it=='-')
+		{
+			stringstream ss;
+			v.push_back(buf);
+			ss<<*it;
+			v.push_back(ss.str());
+			buf="";
+		}
+		else buf+=*it;
+	}
+	v.push_back(buf);
+
+	ret=stoi(v.at(0));
+	for(int index=1; index<v.size();index+=2)
+	{
+		if(v.at(index)=="+") ret+=stoi(v.at(index+1));
+		if(v.at(index)=="-") ret-=stoi(v.at(index+1));
+	}
+
+	return ret;
+}
