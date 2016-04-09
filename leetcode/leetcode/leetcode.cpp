@@ -862,7 +862,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	rh=hc->numberToWords(ttr);
 
 	ttr=hc->stoi("12");
-	ttr=hc->calculate("(4+9)");
+	ttr=hc->calculate("1-(4+9)");
 
 	return 0;
 }

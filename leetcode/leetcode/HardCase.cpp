@@ -316,7 +316,7 @@ int HardCase::calculate(string s)
 				}
 				ss<<tt;
 				tmp=ss.str();
-				for(string::reverse_iterator sit=tmp.rbegin(); sit!=tmp.rend(); sit++)
+				for(string::iterator sit=tmp.begin(); sit!=tmp.end(); sit++)
 				{
 					st.push(*sit);
 				}
@@ -328,6 +328,7 @@ int HardCase::calculate(string s)
             }
         }
       
+		buf="";
 		while(st.size())
 		{
 			rst.push(st.top());
