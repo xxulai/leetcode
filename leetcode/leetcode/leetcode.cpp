@@ -863,6 +863,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
 	ttr=hc->stoi("12");
 	ttr=hc->calculate("1-(4+9)");
+	ttr=hc->countDigitOne(3184191);
 
 	return 0;
 }

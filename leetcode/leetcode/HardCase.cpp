@@ -390,3 +390,30 @@ int HardCase::cal(string s)
 
 	return ret;
 }
+
+
+int HardCase::countDigitOne(int n) {
+
+        if(d_countone.size()==0)
+			d_countone.push_back(0);
+        
+		if(d_countone.size()>n)
+			return d_countone.at(n);
+		else
+		{
+			for(int i=d_countone.size(); i<=n; i++)
+			{
+				int count=0;
+				stringstream ss;
+				ss<<i;
+				string str=ss.str();
+				for(string::iterator it=str.begin(); it!=str.end(); it++)
+				{
+					if(*it=='1')
+						count++;
+				}
+				d_countone.push_back(count+d_countone.at(d_countone.size()-1));
+			}
+		}
+		return d_countone.back();	
+}

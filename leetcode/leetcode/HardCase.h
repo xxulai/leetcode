@@ -21,4 +21,8 @@ public:
 								"(1+(4+5+2)-3)+(6+8)" = 23*/
 	int cal(string s);
 	int stoi(string s);  //from string to integer
+
+	vector<int> d_countone; //dynamic buffer for countone
+	int countDigitOne(int n); /*Given n = 13,
+								Return 6, because digit 1 occurred in the following numbers: 1, 10, 11, 12, 13.*/
 };
