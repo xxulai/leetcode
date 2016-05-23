@@ -1317,3 +1317,14 @@ ListNode* EasyCase::oddEvenList(ListNode* head)
 	return head;
 }
 
+string EasyCase::reverseString(string s) {
+        string ret="";
+        
+        for(string::reverse_iterator rit=s.rbegin(); rit!=s.rend(); rit++)
+        {
+            ret+=*rit;
+        }
+        
+        return ret;
+    }
+

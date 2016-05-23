@@ -74,4 +74,5 @@ public:
 	bool isValid(string s); //Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.The brackets must close in the correct order, "()" and "()[]{}" are all valid but "(]" and "([)]" are not.
 	int computeArea(int A, int B, int C, int D, int E, int F, int G, int H); //Find the total area covered by two rectilinear rectangles in a 2D plane. Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.
 	ListNode* oddEvenList(ListNode* head); //Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
+	string reverseString(string s);
 };
