@@ -1326,5 +1326,27 @@ string EasyCase::reverseString(string s) {
         }
         
         return ret;
-    }
+}
+
+int EasyCase::integerBreak(int n) {
+        if(n==2) return 1;
+        else if(n==3) return 2;
+        else if(n==4) return 4;
+        
+        int left=n%3;
+        int count=n/3;
+        
+        if(left==2)
+        {
+            return (int)pow(3,(float)count)*2;
+        }
+        else if(left==1)
+        {
+            return (int)pow(3,(float)(count-1))*4;
+        }
+        else
+        {
+            return (int)pow(3,(float)count);
+        }
+}
 

@@ -75,4 +75,20 @@ public:
 	int computeArea(int A, int B, int C, int D, int E, int F, int G, int H); //Find the total area covered by two rectilinear rectangles in a 2D plane. Each rectangle is defined by its bottom left corner and top right corner as shown in the figure.
 	ListNode* oddEvenList(ListNode* head); //Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
 	string reverseString(string s);
+	int EasyCase::integerBreak(int n);
+	/*
+	这道题给了我们一个正整数n，让我们拆分成至少两个正整数之和，使其乘积最大，题目提示中让我们用O(n)来解题，而且告诉我们找7到10之间的规律，那么我们一点一点的来分析：
+    正整数从1开始，但是1不能拆分成两个正整数之和，所以不能当输出。
+    那么2只能拆成1+1，所以乘积也为1。
+    数字3可以拆分成2+1或1+1+1，显然第一种拆分方法乘积大为2。
+	数字4拆成2+2，乘积最大，为4。
+    数字5拆成3+2，乘积最大，为6。
+    数字6拆成3+3，乘积最大，为9。
+    数字7拆为3+4，乘积最大，为12。
+    数字8拆为3+3+2，乘积最大，为18。
+    数字9拆为3+3+3，乘积最大，为27。
+    数字10拆为3+3+4，乘积最大，为36。
+....
+那么通过观察上面的规律，我们可以看出从5开始，数字都需要先拆出所有的3，一直拆到剩下一个数为2或者4，因为剩4就不用再拆了，拆成两个2和不拆没有意义，而且4不能拆出一个3剩一个1，这样会比拆成2+2的乘积小。
+	*/
 };

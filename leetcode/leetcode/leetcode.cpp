@@ -865,6 +865,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	ttr=hc->calculate("1-(4+9)");
 	ttr=hc->countDigitOne(3184191);
 
+	int ib=ec->integerBreak(10);
+
 	return 0;
 }
 
